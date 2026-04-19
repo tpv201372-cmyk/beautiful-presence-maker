@@ -70,7 +70,7 @@ export function Hero() {
               {[
                 { v: "10 000+", l: "учеников" },
                 { v: "3+ года", l: "опыта в Китае" },
-                { v: "90К+", l: "подписчиков" },
+                { v: "90 000+", l: "подписчиков" },
               ].map((m) => (
                 <div key={m.l} className="border-t border-navy/20 pt-4">
                   <div className="font-display text-2xl md:text-3xl text-navy">{m.v}</div>
