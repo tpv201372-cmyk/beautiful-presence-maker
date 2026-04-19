@@ -1,32 +1,21 @@
 
-User wants the "Самостоятельный" tariff card updated with info from the second screenshot. Comparing:
+Update the second tariff "Вместе с Гузель" in `src/components/landing/Tariffs.tsx` using info from the screenshot.
 
-Current features:
-- Доступ ко всем 16 модулям
-- Все материалы и шаблоны
-- База проверенных поставщиков
-- Чат с одногруппниками
-- Доступ на 6 месяцев
-
-Screenshot says:
+New features list (7 items):
 - Доступ к общему чату обучения
 - Доступ ко всем блокам обучения, включая блоки о продвижении
 - Возможность получать обратную связь от куратора на каждом этапе заказов из Китая
-- Доступ к материалам обучения 4 месяца
-- БОНУС: База поставщиков (люкс-копии товаров, фабрики и производства Китая, контакты с рынков Гуанчжоу)
-- Стоимость 75 000 ₽ (750$), рассрочка на 12 месяцев / полная оплата
+- Личное сопровождение от Гузель в течение 2 месяцев
+- Проверка всех домашних заданий, включая блок по продвижению
+- Доступ к уникальной базе проверенных поставщиков из Китая
+- Доступ к материалам обучения 6 месяцев
 
-## Plan
+Bonus block (same style as "Самостоятельный"):
+- Title: "Бонус"
+- Text: "База поставщиков: люкс-копии товаров, фабрики и производства Китая, контакты с рынков Гуанчжоу"
 
-Update only the first tariff object in `src/components/landing/Tariffs.tsx`:
+Payment note: "Рассрочка на 12 месяцев или полная оплата"
 
-1. Replace `features` array with the 5 items from the screenshot.
-2. Add a separate "БОНУС" block highlighted under the features list (visually distinct: small label + description text), so the bonus stands out instead of being just another checkmark item.
-3. Keep price `75 000 ₽` / `≈ 750 $` and add a small note about "рассрочка на 12 месяцев / полная оплата" near price or under CTA (replacing the generic "Доступна беспроцентная рассрочка" link with this specific text for this tariff).
+Note: screenshot shows price "150 000 (150$)" — clearly a typo in source; keep current "≈ 1 500 $" which is correct.
 
-Implementation notes:
-- Extend the tariff data shape with optional `bonus?: { title: string; text: string }` and `paymentNote?: string`.
-- Render these conditionally so the other two tariffs (Вместе с Гузель / Индивидуальный) keep their current look unchanged.
-- Bonus block: thin top border + small uppercase label "Бонус" in chocolate/gold + description text below, placed between features list and CTA button.
-
-Single file change: `src/components/landing/Tariffs.tsx`.
+Single change: replace the second tariff object's `features` array and add `bonus` + `paymentNote` fields. The existing rendering logic already handles both conditionally for any tariff, so no JSX changes needed.
