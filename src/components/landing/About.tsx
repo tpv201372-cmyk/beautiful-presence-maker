@@ -29,7 +29,8 @@ export function About() {
 
             <div className="mt-8 space-y-5 text-foreground/80 text-base md:text-lg leading-relaxed max-w-2xl">
               <p>
-                Более <strong className="text-navy">3 лет живу в Китае</strong>,
+                Уже более{" "}
+                <strong className="text-navy">3-х лет работаю с Китаем</strong>,
                 ежегодно посещаю крупнейшие промышленные выставки и лично
                 нахожу проверенных поставщиков для своих клиентов и учеников.
               </p>
