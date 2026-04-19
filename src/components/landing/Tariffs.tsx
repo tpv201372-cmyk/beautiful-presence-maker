@@ -8,12 +8,16 @@ const tariffs = [
     altPrice: "≈ 750 $",
     desc: "Для тех, кто умеет учиться сам и быстро внедрять",
     features: [
-      "Доступ ко всем 16 модулям",
-      "Все материалы и шаблоны",
-      "База проверенных поставщиков",
-      "Чат с одногруппниками",
-      "Доступ на 6 месяцев",
+      "Доступ к общему чату обучения",
+      "Доступ ко всем блокам обучения, включая блоки о продвижении",
+      "Обратная связь от куратора на каждом этапе заказов из Китая",
+      "Доступ к материалам обучения 4 месяца",
     ],
+    bonus: {
+      title: "Бонус",
+      text: "База поставщиков: люкс-копии товаров, фабрики и производства Китая, контакты с рынков Гуанчжоу",
+    },
+    paymentNote: "Рассрочка на 12 месяцев или полная оплата",
     cta: "Оплатить",
     highlight: false,
   },
@@ -113,6 +117,29 @@ export function Tariffs() {
                 ))}
               </ul>
 
+              {t.bonus && (
+                <div
+                  className={`mt-6 pt-6 border-t ${
+                    t.highlight ? "border-cream/20" : "border-chocolate/20"
+                  }`}
+                >
+                  <div
+                    className={`text-[11px] uppercase tracking-[0.25em] mb-2 ${
+                      t.highlight ? "text-gold" : "text-chocolate"
+                    }`}
+                  >
+                    {t.bonus.title}
+                  </div>
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      t.highlight ? "text-cream/90" : "text-foreground/80"
+                    }`}
+                  >
+                    {t.bonus.text}
+                  </p>
+                </div>
+              )}
+
               <Button
                 asChild
                 size="lg"
@@ -130,7 +157,7 @@ export function Tariffs() {
                   t.highlight ? "text-cream/70" : "text-chocolate"
                 }`}
               >
-                Доступна беспроцентная рассрочка
+                {t.paymentNote ?? "Доступна беспроцентная рассрочка"}
               </a>
             </div>
           ))}
