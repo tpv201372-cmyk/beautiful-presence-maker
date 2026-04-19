@@ -30,7 +30,7 @@ export function About() {
             <div className="mt-8 space-y-5 text-foreground/80 text-base md:text-lg leading-relaxed max-w-2xl">
               <p>
                 Уже более{" "}
-                <strong className="text-navy">3-х лет работаю с Китаем</strong>,
+                <strong className="text-navy">3-х лет работаю с Китаем напрямую</strong>,
                 ежегодно посещаю крупнейшие промышленные выставки и лично
                 нахожу проверенных поставщиков для своих клиентов и учеников.
               </p>
