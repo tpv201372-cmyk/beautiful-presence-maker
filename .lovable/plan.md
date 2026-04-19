@@ -1,56 +1,14 @@
 
-# Лендинг для Гузель Маликовой — академия байеров «Китай от А до Я»
+User says the hero photo is being cropped on desktop. Looking at Hero.tsx, the image uses `h-[520px] md:h-[620px] object-cover` — fixed heights with object-cover crop the image. The uploaded screenshot shows the woman's face is cut off at top.
 
-## Концепция и стиль
-Премиальный, элегантный лендинг в стиле «editorial / luxury» — крупная типографика, много воздуха, мягкие переходы, аккуратные бежевые карточки на фоне крем/айвори.
+Fix: change `object-cover` to `object-contain` won't work well with fixed height + decorative frame. Better approach: remove fixed pixel heights, use natural aspect ratio (object-cover with proper object-position, or use aspect-ratio + object-contain).
 
-**Палитра:**
-- Глубокий синий (navy) `#1E2A4A` — акцент, заголовки, кнопки
-- Тёплый бежевый `#E8DCC4` и крем `#F7F1E6` — фон секций
-- Шоколадно-коричневый `#5C3A1E` — вторичные акценты, типографика
-- Чистый белый — карточки, контраст
+Best fix: use `object-cover` with `object-position: top` so face stays visible, OR switch to `object-contain` and let the frame adapt. Since design has decorative beige backing + gold border, `object-cover object-top` keeps the editorial look while showing the face on all viewports.
 
-**Типографика:** Playfair Display (заголовки, курсив для акцентов) + Inter (текст). Большие заголовки, дробные подзаголовки курсивом.
+Actually checking the screenshot — the face IS cropped at top edge. Using `object-position: top center` (object-top) will preserve the head/face area.
 
-## Структура страницы (одностраничный лендинг)
+Plan:
+- In `src/components/landing/Hero.tsx`, update the `<img>` className: replace `object-cover` with `object-cover object-top` so the photo anchors to the top and the face is always visible on both desktop and mobile.
+- Optionally adjust heights to be slightly more generous on mobile to avoid bottom cropping.
 
-1. **Hero**
-   - Слева: надпись «Первая академия профессии БАЙЕР», крупный заголовок «Китай от А до Я», подзаголовок про обучение, две кнопки («Узнать о тарифах», «Программа курса»), мини-метрики (10 000+ учеников, 3+ года опыта, 90К+ подписчиков).
-   - Справа: фото `IMG_0400.JPG` в высокой вертикальной рамке с бежевой подложкой и тонкой золотистой рамкой; декоративные элементы (иероглифы 中国 водяным знаком, тонкие линии).
-
-2. **О Гузель** — фото `IMG_0389.JPG` слева, справа биография: 3+ года в Китае, своё карго `@china_trukk` (1500+ клиентов, склад в Фошани), ежегодные поездки на выставки, 10 000+ обученных, рекламное образование (6 лет универ + 5 лет SMM). Цитата курсивом.
-
-3. **Цифры/достижения** — 4 карточки на бежевом фоне: 90 000+ подписчиков IG, 17 000 ТГ-канал, 10 000+ учеников, 1500+ клиентов карго.
-
-4. **Кейсы учеников** (Точка А → Точка Б) — 3 карточки: Ильвина (декрет + WB), Азамат (300 → 10К подписчиков, ниша квадроциклов), Диана (шоурум → оптовые клиенты). Каждая карточка с переходом A→B и иконкой стрелки.
-
-5. **Отзывы** — сетка из 6–8 цитат реальных учеников (Валентина, Екатерина, Юлия, Анастасия и др.) на крем-карточках с лёгкой тенью.
-
-6. **Что произойдёт после обучения** — 8 пунктов с галочками в две колонки (безопасные заказы, экономия, первые товары с сопровождением, доход 50К+, поиск клиентов и т.д.).
-
-7. **Программа обучения** — аккордеон/сетка с 16 модулями флагмана (от «Кто такой байер» до «Продвижение и личный бренд»). Сворачиваемые блоки с описанием каждого модуля.
-
-8. **Тарифы флагмана «Китай от А до Я»** — 3 колонки:
-   - «Самостоятельный» — 75 000 ₽ / 750 $
-   - «Вместе с Гузель» (VIP, выделенный) — 150 000 ₽ / 1500 $
-   - «Индивидуальный» — по запросу
-   Кнопка «Оплатить» + ссылка на рассрочку.
-
-9. **Другие программы** — 2 карточки:
-   - Клуб «О закупках в Китае — просто» — 6 500 ₽
-   - «НЕО-закупки в Китае» — от 15 000 ₽ (тариф «Сам») / 25 000 ₽ (с куратором)
-
-10. **Беспроцентная рассрочка** — 4 шага в горизонтальном ряду, примечание про первый платёж через месяц, флаги стран (РФ, РБ, KZ, UZ, KG).
-
-11. **FAQ** — 5–6 типичных вопросов (для кого подходит, нужен ли китайский, сколько часов в неделю, рассрочка, возврат и т.д.).
-
-12. **Финальный CTA** — крупный блок на синем фоне с фото Гузель и кнопкой «Записаться на обучение» + ссылками на @juzele_ele и менеджера @china_truck_manager в Telegram.
-
-13. **Footer** — соцсети (Instagram, Telegram-канал, карго), копирайт.
-
-## Технические детали
-- TanStack Start, один маршрут `/` (одностраничный лендинг с плавной прокруткой)
-- Фото в `src/assets/`, оптимизированные импорты
-- Адаптивный дизайн (mobile/tablet/desktop)
-- Лёгкие анимации появления при скролле
-- SEO-метатеги: title, description, og-image (фото Гузель)
+Single small change, one file.
