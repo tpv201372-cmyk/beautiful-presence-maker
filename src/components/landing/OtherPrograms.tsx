@@ -21,6 +21,7 @@ const programs: Program[] = [
   {
     name: "Клуб «О закупках в Китае — просто»",
     price: "6 500 ₽ / мес",
+    sub: "≈ 65 $",
     desc: "Закрытое сообщество с эфирами Гузель, разборами и базой поставщиков. Идеально для старта — попробовать тему без больших вложений.",
     tag: "Сообщество",
   },
@@ -76,7 +77,7 @@ export function OtherPrograms() {
                 <ArrowUpRight className="text-navy/40 group-hover:text-navy group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
               </div>
               <h3 className="font-display text-3xl text-navy leading-tight">{p.name}</h3>
-              <p className="mt-4 text-foreground/75 leading-relaxed flex-1">{p.desc}</p>
+              <p className="mt-4 text-foreground/75 leading-relaxed">{p.desc}</p>
 
               {p.tariffs ? (
                 <div className="mt-6 space-y-6">
@@ -108,22 +109,22 @@ export function OtherPrograms() {
                   ))}
                 </div>
               ) : (
-                <>
-                  {p.price && (
-                    <div className="mt-6 pt-6 border-t border-border">
-                      <div className="font-display text-3xl text-chocolate">{p.price}</div>
-                      {p.sub && <div className="text-sm text-muted-foreground mt-1">{p.sub}</div>}
-                    </div>
-                  )}
+                <div className="mt-6 pt-6 border-t border-border">
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-chocolate mb-3">
+                    Подписка
+                  </div>
+                  <div className="flex items-baseline gap-3">
+                    <div className="font-display text-2xl text-navy">{p.price}</div>
+                    {p.sub && <div className="text-xs text-muted-foreground">{p.sub}</div>}
+                  </div>
                   <Button
                     asChild
-                    variant="outline"
                     size="lg"
-                    className="mt-6 rounded-none h-12 border-navy text-navy hover:bg-navy hover:text-cream"
+                    className="mt-5 w-full rounded-none h-12 bg-navy text-cream hover:bg-navy/90"
                   >
-                    <a href="#cta">Узнать подробнее</a>
+                    <a href="#cta">Оплатить</a>
                   </Button>
-                </>
+                </div>
               )}
             </div>
           ))}
