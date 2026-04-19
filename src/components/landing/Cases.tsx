@@ -29,7 +29,7 @@ export function Cases() {
           <p className="text-xs uppercase tracking-[0.3em] text-chocolate mb-4">
             Кейсы учеников
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-navy leading-[1.05]">
+          <h2 className="font-display md:text-5xl lg:text-6xl text-navy leading-[1.05] text-3xl">
             Из точки <span className="italic text-chocolate">А</span> в точку{" "}
             <span className="italic text-chocolate">Б</span>
           </h2>
