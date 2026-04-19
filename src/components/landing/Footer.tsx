@@ -8,7 +8,7 @@ export function Footer() {
               Гузель Маликова
             </div>
             <div className="text-xs uppercase tracking-[0.25em] text-chocolate mt-1">
-              Академия байеров · Китай от А до Я
+              Академия байеров ·<br />Китай от А до Я
             </div>
           </div>
 
