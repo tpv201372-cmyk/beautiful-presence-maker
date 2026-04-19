@@ -90,7 +90,7 @@ export function Hero() {
               <img
                 src={heroImg}
                 alt="Гузель Маликова — основательница академии байеров «Китай от А до Я»"
-                className="w-full h-[520px] md:h-[620px] object-cover shadow-2xl"
+                className="w-full h-auto max-h-[720px] object-contain bg-beige shadow-2xl"
                 loading="eager"
               />
               <div className="absolute -bottom-6 left-6 bg-navy text-cream px-5 py-3">
