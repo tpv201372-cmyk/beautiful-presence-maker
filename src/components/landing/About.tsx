@@ -11,7 +11,7 @@ export function About() {
               <img
                 src={bioImg}
                 alt="Гузель Маликова — преподаватель, эксперт по закупкам в Китае"
-                className="relative w-full h-[560px] object-cover shadow-xl"
+                className="relative w-full h-auto object-contain bg-beige shadow-xl"
                 loading="lazy"
               />
               <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-beige -z-10" />
