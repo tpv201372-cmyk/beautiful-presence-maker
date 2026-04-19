@@ -16,7 +16,7 @@ export function Stats() {
               className="reveal text-center lg:border-r lg:border-navy/15 last:border-r-0 px-2"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="font-display text-4xl md:text-5xl lg:text-6xl text-navy">
+              <div className="font-display md:text-5xl lg:text-6xl text-navy text-3xl">
                 {s.v}
               </div>
               <div className="mt-3 text-xs md:text-sm uppercase tracking-wider text-chocolate">
