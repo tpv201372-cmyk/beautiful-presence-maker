@@ -1,14 +1,32 @@
 
-User says the hero photo is being cropped on desktop. Looking at Hero.tsx, the image uses `h-[520px] md:h-[620px] object-cover` — fixed heights with object-cover crop the image. The uploaded screenshot shows the woman's face is cut off at top.
+User wants the "Самостоятельный" tariff card updated with info from the second screenshot. Comparing:
 
-Fix: change `object-cover` to `object-contain` won't work well with fixed height + decorative frame. Better approach: remove fixed pixel heights, use natural aspect ratio (object-cover with proper object-position, or use aspect-ratio + object-contain).
+Current features:
+- Доступ ко всем 16 модулям
+- Все материалы и шаблоны
+- База проверенных поставщиков
+- Чат с одногруппниками
+- Доступ на 6 месяцев
 
-Best fix: use `object-cover` with `object-position: top` so face stays visible, OR switch to `object-contain` and let the frame adapt. Since design has decorative beige backing + gold border, `object-cover object-top` keeps the editorial look while showing the face on all viewports.
+Screenshot says:
+- Доступ к общему чату обучения
+- Доступ ко всем блокам обучения, включая блоки о продвижении
+- Возможность получать обратную связь от куратора на каждом этапе заказов из Китая
+- Доступ к материалам обучения 4 месяца
+- БОНУС: База поставщиков (люкс-копии товаров, фабрики и производства Китая, контакты с рынков Гуанчжоу)
+- Стоимость 75 000 ₽ (750$), рассрочка на 12 месяцев / полная оплата
 
-Actually checking the screenshot — the face IS cropped at top edge. Using `object-position: top center` (object-top) will preserve the head/face area.
+## Plan
 
-Plan:
-- In `src/components/landing/Hero.tsx`, update the `<img>` className: replace `object-cover` with `object-cover object-top` so the photo anchors to the top and the face is always visible on both desktop and mobile.
-- Optionally adjust heights to be slightly more generous on mobile to avoid bottom cropping.
+Update only the first tariff object in `src/components/landing/Tariffs.tsx`:
 
-Single small change, one file.
+1. Replace `features` array with the 5 items from the screenshot.
+2. Add a separate "БОНУС" block highlighted under the features list (visually distinct: small label + description text), so the bonus stands out instead of being just another checkmark item.
+3. Keep price `75 000 ₽` / `≈ 750 $` and add a small note about "рассрочка на 12 месяцев / полная оплата" near price or under CTA (replacing the generic "Доступна беспроцентная рассрочка" link with this specific text for this tariff).
+
+Implementation notes:
+- Extend the tariff data shape with optional `bonus?: { title: string; text: string }` and `paymentNote?: string`.
+- Render these conditionally so the other two tariffs (Вместе с Гузель / Индивидуальный) keep their current look unchanged.
+- Bonus block: thin top border + small uppercase label "Бонус" in chocolate/gold + description text below, placed between features list and CTA button.
+
+Single file change: `src/components/landing/Tariffs.tsx`.
