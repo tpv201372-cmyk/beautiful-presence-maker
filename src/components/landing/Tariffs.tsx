@@ -95,6 +95,11 @@ export function Tariffs() {
                 </div>
               )}
 
+              <p className={`text-[11px] uppercase tracking-[0.25em] mb-3 ${
+                t.highlight ? "text-gold" : "text-chocolate"
+              }`}>
+                Тариф
+              </p>
               <h3 className={`font-display text-3xl ${t.highlight ? "text-cream" : "text-navy"}`}>
                 {t.name}
               </h3>
