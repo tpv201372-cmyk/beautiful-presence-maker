@@ -1,26 +1,18 @@
 
-Update the "НЕО-закупки в Китае" card in `src/components/landing/OtherPrograms.tsx` to expose two purchasable tariffs from screenshot 2, with payment buttons for each. The Club card stays unchanged.
+User wants the "Клуб" card in `OtherPrograms.tsx` to:
+1. Add a "Оплатить" payment button (in addition to or replacing "Узнать подробнее").
+2. Reduce empty space — currently the card has a large gap between description and price block because the НЕО card (with 2 tariffs) is much taller, and `flex-1` on description stretches it.
 
-**Data model change:**
-Add an optional `tariffs` array to program items:
-```
-tariffs: [
-  { name: "Все сам", price: "15 000 ₽", altPrice: "≈ 150 $", features: ["Без обратной связи", "Доступ к обучающим материалам в течение 4 месяцев"] },
-  { name: "С поддержкой куратора", price: "25 000 ₽", altPrice: "≈ 250 $", features: ["Обратная связь в группе с куратором", "Доступ к обучающим материалам в течение 6 месяцев"] },
-]
-```
-Remove the old `price` / `sub` for НЕО-закупки (keep them for the Club card).
+**Plan:**
 
-**Layout change:**
-- For programs with `tariffs`, replace the single price block + single button with a stacked list: each tariff renders as a sub-block (name as small uppercase label, price + altPrice in chocolate, short feature list with checkmarks, "Оплатить" button).
-- For programs without `tariffs` (the Club), keep the current price + "Узнать подробнее" button as is.
-- Keep the cream card background, border, eyebrow tag, title, and description identical for both cards so they remain visually consistent.
+In `src/components/landing/OtherPrograms.tsx`, refactor the Club card branch (no `tariffs`):
 
-**Visual style for tariff sub-blocks (inside НЕО card):**
-- Thin top border separator between tariffs
-- Tariff name: `text-[11px] uppercase tracking-[0.25em] text-chocolate`
-- Price: `font-display text-2xl text-navy`, altPrice: `text-xs text-muted-foreground`
-- Features: small list with `Check` icon (chocolate, like Tariffs.tsx)
-- CTA "Оплатить": full-width navy button (matches Tariffs primary CTA style)
+- Wrap price + button in the same `pt-6 border-t border-border` sub-block style used for tariffs, so it visually matches.
+- Add small uppercase "Тариф" / "Подписка" label above price (matching НЕО card tariff sub-blocks for consistency).
+- Add `altPrice` field to Club data (e.g. `≈ 65 $`) to mirror НЕО layout.
+- Replace single "Узнать подробнее" outline button with TWO stacked buttons: primary navy "Оплатить" + secondary outline "Узнать подробнее" — OR just one "Оплатить" button to keep it tight. Going with **just "Оплатить"** (navy, full-width) for consistency with НЕО tariffs.
+- Remove `flex-1` from description so it doesn't stretch and create empty space. Instead, add `mt-auto` to the price/CTA block so it pins to the bottom naturally without inflating the description.
 
-Single file edit: `src/components/landing/OtherPrograms.tsx`. No new dependencies.
+Result: Club card stays compact, ends with a clean price + payment CTA block matching the НЕО tariff sub-block style. Heights will still differ slightly (НЕО has 2 tariffs), but the Club won't have a giant empty gap inside its description area.
+
+**Single file edit:** `src/components/landing/OtherPrograms.tsx`. No new dependencies.
