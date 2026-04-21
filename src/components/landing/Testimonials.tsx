@@ -40,7 +40,6 @@ const mobileSlides: Testimonial[][] = [
   [
     { src: anna, alt: "Отзыв ученицы Anna" },
     { src: alena, alt: "Отзыв ученицы Алёны" },
-    { src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" },
   ],
   [
     { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
@@ -50,6 +49,7 @@ const mobileSlides: Testimonial[][] = [
     { src: aliya, alt: "Отзыв ученицы Алия Байер" },
     { src: elena, alt: "Отзыв ученицы Елена Китай Байер" },
   ],
+  [{ src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" }],
   [{ src: evdokia, alt: "Отзыв ученицы Евдокии" }],
   [{ src: chinaTruck, alt: "Отзыв о первой посылке China Truck" }],
   [{ src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" }],
@@ -118,9 +118,7 @@ export function Testimonials() {
                     {group.map((t) => (
                       <figure
                         key={t.alt}
-                        className={`bg-cream p-3 border border-border hover:border-navy hover:shadow-md transition-all relative ${
-                          group.length === 3 ? "max-h-[28vh] overflow-hidden flex items-center justify-center" : ""
-                        }`}
+                        className="bg-cream p-3 border border-border hover:border-navy hover:shadow-md transition-all relative"
                       >
                         <div className="absolute top-2 left-3 text-gold font-display text-3xl leading-none pointer-events-none select-none z-10">
                           “
@@ -129,11 +127,7 @@ export function Testimonials() {
                           src={t.src}
                           alt={t.alt}
                           loading="lazy"
-                          className={
-                            group.length === 3
-                              ? "max-h-full w-auto object-contain block mx-auto"
-                              : "w-full h-auto object-contain block"
-                          }
+                          className="w-full h-auto object-contain block"
                         />
                       </figure>
                     ))}
