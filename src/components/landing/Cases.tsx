@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import azamatBefore from "@/assets/cases/azamat-before.jpg";
 import azamatAfter from "@/assets/cases/azamat-after.jpg";
+import ilvinaPhoto from "@/assets/cases/ilvina.jpg";
 
 type CaseItem = {
   name: string;
@@ -15,21 +16,23 @@ type CaseItem = {
   to: string;
   tag: string;
   images?: { before: string; after: string };
+  photo?: string;
 };
 
 const cases: CaseItem[] = [
-  {
-    name: "Ильвина",
-    from: "В декрете, без опыта e-commerce",
-    to: "Запустила магазин на Wildberries, первая поставка из Китая окупилась за 3 недели",
-    tag: "WB · Маркетплейсы",
-  },
   {
     name: "Азамат",
     from: "304 подписчика в нише спецтехники",
     to: "Вырос до 12 200 подписчиков и привозит технику напрямую с заводов Китая",
     tag: "Ниша · Спецтехника",
     images: { before: azamatBefore, after: azamatAfter },
+  },
+  {
+    name: "Ильвина",
+    from: "В декрете, без опыта e-commerce",
+    to: "Запустила магазин на Wildberries, первая поставка из Китая окупилась за 3 недели",
+    tag: "WB · Маркетплейсы",
+    photo: ilvinaPhoto,
   },
   {
     name: "Диана",
