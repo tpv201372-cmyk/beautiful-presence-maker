@@ -38,7 +38,7 @@ const cases: CaseItem[] = [
   {
     name: "Диана",
     from: "Маленький шоурум одежды в своём городе",
-    to: "Перешла в опт — нашла своих B2B-клиентов и закрыла первую партию на 2 000 000 ₽",
+    to: "Перешла в опт — нашла своих B2B-клиентов и закрыла первую партию на\n2 000 000 ₽",
     tag: "Опт · Шоурум",
     photo: dianaPhoto,
   },
@@ -169,7 +169,7 @@ export function Cases() {
                       <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
                         Стало
                       </div>
-                      <p className="text-sm text-navy font-medium leading-relaxed">
+                      <p className="text-sm text-navy font-medium leading-relaxed whitespace-pre-line">
                         {c.to}
                       </p>
                     </div>
