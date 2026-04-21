@@ -6,6 +6,9 @@ import aliya from "@/assets/testimonials/aliya.jpg";
 import elena from "@/assets/testimonials/elena.jpg";
 import evdokia from "@/assets/testimonials/evdokia.jpg";
 import chinaTruck from "@/assets/testimonials/china-truck.jpg";
+import guzelCourse from "@/assets/testimonials/guzel-course.jpg";
+import firstParcel from "@/assets/testimonials/first-parcel.jpg";
+import kate from "@/assets/testimonials/kate.jpg";
 
 const testimonials = [
   { src: anna, alt: "Отзыв ученицы Anna" },
@@ -16,6 +19,9 @@ const testimonials = [
   { src: elena, alt: "Отзыв ученицы Елена Китай Байер" },
   { src: evdokia, alt: "Отзыв ученицы Евдокии" },
   { src: chinaTruck, alt: "Отзыв о первой посылке China Truck" },
+  { src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" },
+  { src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" },
+  { src: kate, alt: "Отзыв ученицы Kate о доставке 27,8 кг за 14 дней" },
 ];
 
 export function Testimonials() {
