@@ -97,9 +97,9 @@ export function Cases() {
             {cases.map((c) => (
               <CarouselItem
                 key={c.name}
-                className="pl-6 basis-full md:basis-1/2 lg:basis-1/3"
+                className="pl-6 basis-full md:basis-1/2 xl:basis-2/5"
               >
-                <article className="group bg-cream border border-border p-8 flex flex-col h-full hover:border-navy transition-colors">
+                <article className="group bg-cream border border-border p-6 md:p-8 flex flex-col h-full hover:border-navy transition-colors">
                   <div className="text-xs uppercase tracking-wider text-gold mb-4">
                     {c.tag}
                   </div>
@@ -108,42 +108,46 @@ export function Cases() {
                   </h3>
 
                   {c.images ? (
-                    <div className="relative grid grid-cols-2 gap-3 items-stretch mb-6">
-                      <figure className="relative overflow-hidden border border-navy/15 aspect-[3/4]">
-                        <img
-                          src={c.images.before}
-                          alt={`${c.name} — было`}
-                          className="absolute inset-0 w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent px-3 py-2 text-[10px] uppercase tracking-[0.25em] text-cream">
+                    <div className="relative grid grid-cols-2 gap-4 items-start mb-4">
+                      <figure className="flex flex-col">
+                        <figcaption className="text-[10px] uppercase tracking-[0.25em] text-chocolate mb-1.5">
                           Было
                         </figcaption>
+                        <div className="border border-navy/15 bg-cream overflow-hidden flex items-start justify-center">
+                          <img
+                            src={c.images.before}
+                            alt={`${c.name} — было`}
+                            className="w-full h-auto max-h-[420px] object-contain"
+                            loading="lazy"
+                          />
+                        </div>
                       </figure>
-                      <figure className="relative overflow-hidden border border-navy/15 aspect-[3/4]">
-                        <img
-                          src={c.images.after}
-                          alt={`${c.name} — стало`}
-                          className="absolute inset-0 w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent px-3 py-2 text-[10px] uppercase tracking-[0.25em] text-gold">
+                      <figure className="flex flex-col">
+                        <figcaption className="text-[10px] uppercase tracking-[0.25em] text-gold mb-1.5">
                           Стало
                         </figcaption>
+                        <div className="border border-navy/15 bg-cream overflow-hidden flex items-start justify-center">
+                          <img
+                            src={c.images.after}
+                            alt={`${c.name} — стало`}
+                            className="w-full h-auto max-h-[420px] object-contain"
+                            loading="lazy"
+                          />
+                        </div>
                       </figure>
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-cream border border-gold/40 size-9 flex items-center justify-center pointer-events-none">
+                      <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 bg-cream border border-gold/40 size-10 flex items-center justify-center pointer-events-none">
                         <ArrowRight className="text-gold size-4" />
                       </div>
                     </div>
                   ) : (
-                    <div className="relative mb-6 flex items-center justify-center aspect-[5/3] border border-navy/10 bg-navy/[0.03] overflow-hidden">
+                    <div className="relative mb-4 flex items-center justify-center min-h-[260px] border border-navy/10 bg-navy/[0.03] overflow-hidden">
                       <span className="font-display text-7xl text-gold/25 select-none">
                         成功
                       </span>
                     </div>
                   )}
 
-                  <div className="space-y-4 flex-1">
+                  <div className="space-y-3 flex-1">
                     <div>
                       <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
                         Было
@@ -151,7 +155,7 @@ export function Cases() {
                       <p className="text-sm text-foreground/75">{c.from}</p>
                     </div>
                     <div className="flex justify-center">
-                      <ArrowRight className="text-gold size-5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="text-gold size-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                     <div>
                       <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
