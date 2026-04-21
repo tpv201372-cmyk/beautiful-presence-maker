@@ -33,7 +33,7 @@ export function Program() {
             Программа флагмана
           </p>
           <h2 className="font-display md:text-5xl lg:text-6xl text-navy leading-[1.05] text-3xl">
-            16 модулей <span className="italic text-chocolate">от А до Я</span>
+            Рабочая модель <span className="italic text-chocolate">от А до Я</span>
           </h2>
           <p className="mt-6 text-foreground/75 text-lg max-w-2xl">
             Полная пошаговая система: от теории профессии до запуска
