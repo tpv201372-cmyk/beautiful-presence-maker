@@ -18,7 +18,9 @@ import guzelCourse from "@/assets/testimonials/guzel-course.jpg";
 import firstParcel from "@/assets/testimonials/first-parcel.jpg";
 import kate from "@/assets/testimonials/kate.jpg";
 
-const testimonials = [
+type Testimonial = { src: string; alt: string };
+
+const testimonials: Testimonial[] = [
   { src: anna, alt: "Отзыв ученицы Anna" },
   { src: alena, alt: "Отзыв ученицы Алёны" },
   { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
@@ -30,6 +32,28 @@ const testimonials = [
   { src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" },
   { src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" },
   { src: kate, alt: "Отзыв ученицы Kate о доставке 27,8 кг за 14 дней" },
+];
+
+// Mobile-only grouping: stack short testimonials in pairs to avoid empty space.
+// Long screenshots stay alone; shorter ones combine vertically within one slide.
+const mobileSlides: Testimonial[][] = [
+  [
+    { src: anna, alt: "Отзыв ученицы Anna" },
+    { src: alena, alt: "Отзыв ученицы Алёны" },
+  ],
+  [
+    { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
+    { src: adel, alt: "Отзыв ученика Адель Байер" },
+  ],
+  [
+    { src: aliya, alt: "Отзыв ученицы Алия Байер" },
+    { src: elena, alt: "Отзыв ученицы Елена Китай Байер" },
+  ],
+  [{ src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" }],
+  [{ src: evdokia, alt: "Отзыв ученицы Евдокии" }],
+  [{ src: chinaTruck, alt: "Отзыв о первой посылке China Truck" }],
+  [{ src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" }],
+  [{ src: kate, alt: "Отзыв ученицы Kate о доставке 27,8 кг за 14 дней" }],
 ];
 
 export function Testimonials() {
