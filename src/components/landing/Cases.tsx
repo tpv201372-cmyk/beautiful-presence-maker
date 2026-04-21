@@ -9,6 +9,7 @@ import {
 import azamatBefore from "@/assets/cases/azamat-before.jpg";
 import azamatAfter from "@/assets/cases/azamat-after.jpg";
 import ilvinaPhoto from "@/assets/cases/ilvina.jpg";
+import dianaPhoto from "@/assets/cases/diana.jpg";
 
 type CaseItem = {
   name: string;
@@ -39,6 +40,7 @@ const cases: CaseItem[] = [
     from: "Маленький шоурум одежды в своём городе",
     to: "Перешла в опт — нашла своих B2B-клиентов и закрыла первую партию на 2 000 000 ₽",
     tag: "Опт · Шоурум",
+    photo: dianaPhoto,
   },
 ];
 
@@ -143,22 +145,15 @@ export function Cases() {
                       </div>
                     </div>
                   ) : (
-                    c.photo ? (
                     <div className="relative mb-4 border border-navy/15 bg-cream overflow-hidden flex items-center justify-center">
                       <img
-                        src={c.photo}
+                        src={c.photo!}
                         alt={c.name}
                         className="w-full h-auto max-h-[420px] object-contain"
                         loading="lazy"
                       />
                     </div>
-                  ) : (
-                    <div className="relative mb-4 flex items-center justify-center min-h-[260px] border border-navy/10 bg-navy/[0.03] overflow-hidden">
-                      <span className="font-display text-7xl text-gold/25 select-none">
-                        成功
-                      </span>
-                    </div>
-                  ))}
+                  )}
 
                   <div className="space-y-3 flex-1">
                     <div>
