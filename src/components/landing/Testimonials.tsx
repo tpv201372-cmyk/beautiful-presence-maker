@@ -40,6 +40,7 @@ const mobileSlides: Testimonial[][] = [
   [
     { src: anna, alt: "Отзыв ученицы Anna" },
     { src: alena, alt: "Отзыв ученицы Алёны" },
+    { src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" },
   ],
   [
     { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
@@ -49,7 +50,6 @@ const mobileSlides: Testimonial[][] = [
     { src: aliya, alt: "Отзыв ученицы Алия Байер" },
     { src: elena, alt: "Отзыв ученицы Елена Китай Байер" },
   ],
-  [{ src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" }],
   [{ src: evdokia, alt: "Отзыв ученицы Евдокии" }],
   [{ src: chinaTruck, alt: "Отзыв о первой посылке China Truck" }],
   [{ src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" }],
