@@ -18,7 +18,9 @@ import guzelCourse from "@/assets/testimonials/guzel-course.jpg";
 import firstParcel from "@/assets/testimonials/first-parcel.jpg";
 import kate from "@/assets/testimonials/kate.jpg";
 
-const testimonials = [
+type Testimonial = { src: string; alt: string };
+
+const testimonials: Testimonial[] = [
   { src: anna, alt: "Отзыв ученицы Anna" },
   { src: alena, alt: "Отзыв ученицы Алёны" },
   { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
@@ -30,6 +32,28 @@ const testimonials = [
   { src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" },
   { src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" },
   { src: kate, alt: "Отзыв ученицы Kate о доставке 27,8 кг за 14 дней" },
+];
+
+// Mobile-only grouping: stack short testimonials in pairs to avoid empty space.
+// Long screenshots stay alone; shorter ones combine vertically within one slide.
+const mobileSlides: Testimonial[][] = [
+  [
+    { src: anna, alt: "Отзыв ученицы Anna" },
+    { src: alena, alt: "Отзыв ученицы Алёны" },
+  ],
+  [
+    { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
+    { src: adel, alt: "Отзыв ученика Адель Байер" },
+  ],
+  [
+    { src: aliya, alt: "Отзыв ученицы Алия Байер" },
+    { src: elena, alt: "Отзыв ученицы Елена Китай Байер" },
+  ],
+  [{ src: guzelCourse, alt: "Отзыв о курсе: короткие уроки без воды" }],
+  [{ src: evdokia, alt: "Отзыв ученицы Евдокии" }],
+  [{ src: chinaTruck, alt: "Отзыв о первой посылке China Truck" }],
+  [{ src: firstParcel, alt: "Отзыв: первая посылка с полным сопровождением" }],
+  [{ src: kate, alt: "Отзыв ученицы Kate о доставке 27,8 кг за 14 дней" }],
 ];
 
 export function Testimonials() {
@@ -88,19 +112,26 @@ export function Testimonials() {
             className="reveal"
           >
             <CarouselContent className="-ml-4">
-              {testimonials.map((t) => (
-                <CarouselItem key={t.alt} className="pl-4 basis-[85%]">
-                  <figure className="bg-cream p-3 border border-border hover:border-navy hover:shadow-md transition-all relative h-full">
-                    <div className="absolute top-2 left-3 text-gold font-display text-3xl leading-none pointer-events-none select-none z-10">
-                      “
-                    </div>
-                    <img
-                      src={t.src}
-                      alt={t.alt}
-                      loading="lazy"
-                      className="w-full h-auto object-contain block"
-                    />
-                  </figure>
+              {mobileSlides.map((group, gi) => (
+                <CarouselItem key={gi} className="pl-4 basis-[85%]">
+                  <div className="flex flex-col gap-4 h-full">
+                    {group.map((t) => (
+                      <figure
+                        key={t.alt}
+                        className="bg-cream p-3 border border-border hover:border-navy hover:shadow-md transition-all relative"
+                      >
+                        <div className="absolute top-2 left-3 text-gold font-display text-3xl leading-none pointer-events-none select-none z-10">
+                          “
+                        </div>
+                        <img
+                          src={t.src}
+                          alt={t.alt}
+                          loading="lazy"
+                          className="w-full h-auto object-contain block"
+                        />
+                      </figure>
+                    ))}
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
