@@ -1,18 +1,30 @@
 
-User wants the "Клуб" card in `OtherPrograms.tsx` to:
-1. Add a "Оплатить" payment button (in addition to or replacing "Узнать подробнее").
-2. Reduce empty space — currently the card has a large gap between description and price block because the НЕО card (with 2 tariffs) is much taller, and `flex-1` on description stretches it.
+## Удаление пунктов 09, 11, 12, 13, 16 из раздела «Программа флагмана»
 
-**Plan:**
+В файле `src/components/landing/Program.tsx` из массива `modules` будут удалены 5 пунктов:
 
-In `src/components/landing/OtherPrograms.tsx`, refactor the Club card branch (no `tariffs`):
+- **09** — «Таможня и сертификация»
+- **11** — «Поездка в Китай»
+- **12** — «Поиск клиентов в опт»
+- **13** — «Маркетплейсы РФ и СНГ»
+- **16** — «Масштабирование»
 
-- Wrap price + button in the same `pt-6 border-t border-border` sub-block style used for tariffs, so it visually matches.
-- Add small uppercase "Тариф" / "Подписка" label above price (matching НЕО card tariff sub-blocks for consistency).
-- Add `altPrice` field to Club data (e.g. `≈ 65 $`) to mirror НЕО layout.
-- Replace single "Узнать подробнее" outline button with TWO stacked buttons: primary navy "Оплатить" + secondary outline "Узнать подробнее" — OR just one "Оплатить" button to keep it tight. Going with **just "Оплатить"** (navy, full-width) for consistency with НЕО tariffs.
-- Remove `flex-1` from description so it doesn't stretch and create empty space. Instead, add `mt-auto` to the price/CTA block so it pins to the bottom naturally without inflating the description.
+Нумерация пересчитается автоматически (01–11), так как номера генерируются по индексу.
 
-Result: Club card stays compact, ends with a clean price + payment CTA block matching the НЕО tariff sub-block style. Heights will still differ slightly (НЕО has 2 tariffs), but the Club won't have a giant empty gap inside its description area.
+### Итоговый список (11 модулей):
+1. Кто такой байер
+2. Виды бизнес-моделей
+3. Юридические основы работы с клиентами
+4. Анализ ниши и товара
+5. Поставщики и фабрики Китая
+6. Переговоры с поставщиком
+7. Контроль качества
+8. Логистика и карго
+9. Расчёт себестоимости *(было 10)*
+10. Личный бренд байера *(было 14)*
+11. Продвижение в соцсетях *(было 15)*
 
-**Single file edit:** `src/components/landing/OtherPrograms.tsx`. No new dependencies.
+### Технические детали
+- Единственный изменяемый файл: `src/components/landing/Program.tsx`
+- Удаляются 5 элементов массива `modules`
+- Никаких новых зависимостей и других изменений не требуется
