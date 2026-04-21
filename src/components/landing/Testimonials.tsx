@@ -1,12 +1,21 @@
+import anna from "@/assets/testimonials/anna.jpg";
+import alena from "@/assets/testimonials/alena.jpg";
+import leysan from "@/assets/testimonials/leysan.jpg";
+import adel from "@/assets/testimonials/adel.jpg";
+import aliya from "@/assets/testimonials/aliya.jpg";
+import elena from "@/assets/testimonials/elena.jpg";
+import evdokia from "@/assets/testimonials/evdokia.jpg";
+import chinaTruck from "@/assets/testimonials/china-truck.jpg";
+
 const testimonials = [
-  { name: "Валентина", text: "Курс просто бомба! Гузель объясняет всё по полочкам, без воды. Уже сделала первую тестовую закупку." },
-  { name: "Екатерина", text: "Самое ценное — поддержка в чате и проверка поставщиков. Сэкономила на одной партии больше, чем стоит обучение." },
-  { name: "Юлия", text: "Прошла другие курсы — везде только теория. Здесь дают конкретные контакты, шаблоны и пошаговые скрипты." },
-  { name: "Анастасия", text: "За месяц обучения вышла на первых клиентов в опт. Теперь работаю напрямую с фабрикой в Гуанчжоу." },
-  { name: "Динара", text: "Гузель — настоящий эксперт. Видно, что человек живёт этим. Контент уровня закрытого клуба." },
-  { name: "Марина", text: "Очень атмосферно, по-домашнему и при этом максимально по делу. Поняла, как считать юнит-экономику." },
-  { name: "Алина", text: "Обучение окупилось ещё до его окончания. Сейчас планирую первую поездку в Китай — уже знаю, куда ехать." },
-  { name: "Светлана", text: "Я думала, что Китай — это сложно и страшно. После курса страх ушёл, появилось понимание системы." },
+  { src: anna, alt: "Отзыв ученицы Anna" },
+  { src: alena, alt: "Отзыв ученицы Алёны" },
+  { src: leysan, alt: "Отзыв ученицы leysan_balloons_nch" },
+  { src: adel, alt: "Отзыв ученика Адель Байер" },
+  { src: aliya, alt: "Отзыв ученицы Алия Байер" },
+  { src: elena, alt: "Отзыв ученицы Елена Китай Байер" },
+  { src: evdokia, alt: "Отзыв ученицы Евдокии" },
+  { src: chinaTruck, alt: "Отзыв о первой посылке China Truck" },
 ];
 
 export function Testimonials() {
@@ -22,20 +31,22 @@ export function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 [column-fill:_balance]">
           {testimonials.map((t, i) => (
             <figure
-              key={t.name}
-              className="reveal bg-background p-6 border border-border shadow-sm hover:shadow-md transition-shadow"
+              key={t.alt}
+              className="reveal break-inside-avoid mb-5 bg-cream p-3 border border-border hover:border-navy hover:shadow-md transition-all relative"
               style={{ transitionDelay: `${(i % 4) * 60}ms` }}
             >
-              <div className="text-gold font-display text-3xl leading-none mb-3">“</div>
-              <blockquote className="text-sm text-foreground/80 leading-relaxed">
-                {t.text}
-              </blockquote>
-              <figcaption className="mt-4 pt-4 border-t border-border font-display italic text-navy">
-                {t.name}
-              </figcaption>
+              <div className="absolute top-2 left-3 text-gold font-display text-3xl leading-none pointer-events-none select-none z-10">
+                “
+              </div>
+              <img
+                src={t.src}
+                alt={t.alt}
+                loading="lazy"
+                className="w-full h-auto object-contain block"
+              />
             </figure>
           ))}
         </div>
