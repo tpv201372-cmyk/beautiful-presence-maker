@@ -68,7 +68,7 @@ export function Hero() {
             {/* Metrics */}
             <div className="mt-14 grid grid-cols-3 gap-6 max-w-xl">
               {[
-                { v: "10 000+", l: "учеников" },
+                { v: "2 000+", l: "учеников" },
                 { v: "3+ года", l: "опыта в Китае" },
                 { v: "90 000+", l: "подписчиков" },
               ].map((m) => (
