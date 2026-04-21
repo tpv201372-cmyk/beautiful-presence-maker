@@ -22,7 +22,7 @@ const programs: Program[] = [
     name: "Клуб «О закупках в Китае — просто»",
     price: "6 500 ₽ / мес",
     sub: "≈ 65 $",
-    desc: "Закрытое сообщество с эфирами Гузель, разборами и базой поставщиков. Идеально для старта — попробовать тему без больших вложений.",
+    desc: "Базовые закупки из Китая «для себя» в розницу. Идеально для старта - попробовать тему без больших вложений.",
     tag: "Сообщество",
   },
   {
@@ -36,7 +36,7 @@ const programs: Program[] = [
         altPrice: "≈ 150 $",
         features: [
           "Без обратной связи",
-          "Доступ к обучающим материалам в течение 4 месяцев",
+          "Доступ к обучающим материалам в течение 6 месяцев",
         ],
       },
       {
@@ -77,7 +77,7 @@ export function OtherPrograms() {
                 <ArrowUpRight className="text-navy/40 group-hover:text-navy group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
               </div>
               <h3 className="font-display text-3xl text-navy leading-tight">{p.name}</h3>
-              <p className="mt-4 text-foreground/75 leading-relaxed">{p.desc}</p>
+              <p className="mt-4 text-foreground/75 leading-relaxed text-sm">{p.desc}</p>
 
               {p.tariffs ? (
                 <div className="mt-6 space-y-6">
