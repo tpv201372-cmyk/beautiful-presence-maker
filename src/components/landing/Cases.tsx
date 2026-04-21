@@ -1,6 +1,23 @@
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import azamatBefore from "@/assets/cases/azamat-before.jpg";
+import azamatAfter from "@/assets/cases/azamat-after.jpg";
 
-const cases = [
+type CaseItem = {
+  name: string;
+  from: string;
+  to: string;
+  tag: string;
+  images?: { before: string; after: string };
+};
+
+const cases: CaseItem[] = [
   {
     name: "Ильвина",
     from: "В декрете, без опыта e-commerce",
@@ -9,9 +26,10 @@ const cases = [
   },
   {
     name: "Азамат",
-    from: "300 подписчиков в нише квадроциклов",
-    to: "Вырос до 10 000 подписчиков и привозит технику напрямую с заводов Китая",
+    from: "304 подписчика в нише спецтехники",
+    to: "Вырос до 12 200 подписчиков и привозит технику напрямую с заводов Китая",
     tag: "Ниша · Спецтехника",
+    images: { before: azamatBefore, after: azamatAfter },
   },
   {
     name: "Диана",
@@ -22,53 +40,149 @@ const cases = [
 ];
 
 export function Cases() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
   return (
     <section className="bg-background py-20 lg:py-28">
       <div className="container mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-3xl mb-14 reveal">
-          <p className="text-xs uppercase tracking-[0.3em] text-chocolate mb-4">
-            Кейсы учеников
-          </p>
-          <h2 className="font-display md:text-5xl lg:text-6xl text-navy leading-[1.05] text-3xl">
-            Из точки <span className="italic text-chocolate">А</span> в точку{" "}
-            <span className="italic text-chocolate">Б</span>
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {cases.map((c, i) => (
-            <article
-              key={c.name}
-              className="reveal group bg-cream border border-border p-8 flex flex-col h-full hover:border-navy transition-colors"
-              style={{ transitionDelay: `${i * 100}ms` }}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 reveal">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.3em] text-chocolate mb-4">
+              Кейсы учеников
+            </p>
+            <h2 className="font-display md:text-5xl lg:text-6xl text-navy leading-[1.05] text-4xl">
+              Из точки <span className="italic text-chocolate">А</span> в точку{" "}
+              <span className="italic text-chocolate">Б</span>
+            </h2>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => api?.scrollPrev()}
+              aria-label="Предыдущий кейс"
+              className="size-12 border border-navy/30 text-navy hover:bg-navy hover:text-cream transition-colors flex items-center justify-center"
             >
-              <div className="text-xs uppercase tracking-wider text-gold mb-4">
-                {c.tag}
-              </div>
-              <h3 className="font-display text-2xl text-navy mb-6">{c.name}</h3>
-
-              <div className="space-y-4 flex-1">
-                <div>
-                  <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
-                    Было
-                  </div>
-                  <p className="text-sm text-foreground/75">{c.from}</p>
-                </div>
-                <div className="flex justify-center">
-                  <ArrowRight className="text-gold size-5 group-hover:translate-x-1 transition-transform" />
-                </div>
-                <div>
-                  <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
-                    Стало
-                  </div>
-                  <p className="text-sm text-navy font-medium leading-relaxed">
-                    {c.to}
-                  </p>
-                </div>
-              </div>
-            </article>
-          ))}
+              <ArrowRight className="size-5 rotate-180" />
+            </button>
+            <button
+              type="button"
+              onClick={() => api?.scrollNext()}
+              aria-label="Следующий кейс"
+              className="size-12 border border-navy bg-navy text-cream hover:bg-chocolate hover:border-chocolate transition-colors flex items-center justify-center"
+            >
+              <ArrowRight className="size-5" />
+            </button>
+          </div>
         </div>
+
+        <Carousel
+          setApi={setApi}
+          opts={{ align: "start", loop: false }}
+          className="reveal"
+        >
+          <CarouselContent className="-ml-6">
+            {cases.map((c) => (
+              <CarouselItem
+                key={c.name}
+                className="pl-6 basis-full md:basis-1/2 lg:basis-1/3"
+              >
+                <article className="group bg-cream border border-border p-8 flex flex-col h-full hover:border-navy transition-colors">
+                  <div className="text-xs uppercase tracking-wider text-gold mb-4">
+                    {c.tag}
+                  </div>
+                  <h3 className="font-display text-2xl text-navy mb-6">
+                    {c.name}
+                  </h3>
+
+                  {c.images ? (
+                    <div className="relative grid grid-cols-2 gap-3 items-stretch mb-6">
+                      <figure className="relative overflow-hidden border border-navy/15 aspect-[3/4]">
+                        <img
+                          src={c.images.before}
+                          alt={`${c.name} — было`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent px-3 py-2 text-[10px] uppercase tracking-[0.25em] text-cream">
+                          Было
+                        </figcaption>
+                      </figure>
+                      <figure className="relative overflow-hidden border border-navy/15 aspect-[3/4]">
+                        <img
+                          src={c.images.after}
+                          alt={`${c.name} — стало`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent px-3 py-2 text-[10px] uppercase tracking-[0.25em] text-gold">
+                          Стало
+                        </figcaption>
+                      </figure>
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-cream border border-gold/40 size-9 flex items-center justify-center pointer-events-none">
+                        <ArrowRight className="text-gold size-4" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative mb-6 flex items-center justify-center aspect-[5/3] border border-navy/10 bg-navy/[0.03] overflow-hidden">
+                      <span className="font-display text-7xl text-gold/25 select-none">
+                        成功
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="space-y-4 flex-1">
+                    <div>
+                      <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
+                        Было
+                      </div>
+                      <p className="text-sm text-foreground/75">{c.from}</p>
+                    </div>
+                    <div className="flex justify-center">
+                      <ArrowRight className="text-gold size-5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <div>
+                      <div className="text-[11px] uppercase tracking-widest text-chocolate/70 mb-1">
+                        Стало
+                      </div>
+                      <p className="text-sm text-navy font-medium leading-relaxed">
+                        {c.to}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+
+        {count > 1 && (
+          <div className="flex justify-center gap-2 mt-10">
+            {Array.from({ length: count }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => api?.scrollTo(i)}
+                aria-label={`Перейти к кейсу ${i + 1}`}
+                className={`h-1.5 transition-all ${
+                  i === current ? "w-8 bg-gold" : "w-4 bg-navy/20 hover:bg-navy/40"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
