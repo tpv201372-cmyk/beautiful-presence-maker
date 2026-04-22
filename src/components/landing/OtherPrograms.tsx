@@ -15,6 +15,7 @@ type Program = {
   price?: string;
   sub?: string;
   tariffs?: Tariff[];
+  paymentUrl?: string;
 };
 
 const programs: Program[] = [
@@ -24,6 +25,7 @@ const programs: Program[] = [
     sub: "≈ 65 $",
     desc: "Базовые закупки из Китая «для себя» в розницу. Идеально для старта - попробовать тему без больших вложений.",
     tag: "Сообщество",
+    paymentUrl: "https://china.bayersacademy.ru/club65",
   },
   {
     name: "НЕО-закупки в Китае",
@@ -122,7 +124,13 @@ export function OtherPrograms() {
                     size="lg"
                     className="mt-5 w-full rounded-none h-12 bg-navy text-cream hover:bg-navy/90"
                   >
-                    <a href="#cta">Оплатить</a>
+                    <a
+                      href={p.paymentUrl ?? "#cta"}
+                      target={p.paymentUrl ? "_blank" : undefined}
+                      rel={p.paymentUrl ? "noopener noreferrer" : undefined}
+                    >
+                      Оплатить
+                    </a>
                   </Button>
                 </div>
               )}
