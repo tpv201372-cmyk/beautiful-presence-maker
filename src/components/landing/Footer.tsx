@@ -16,7 +16,7 @@ export function Footer() {
             <a href="https://www.instagram.com/juzele_ele" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-chocolate transition-colors">
               Instagram
             </a>
-            <a href="https://t.me/juzele_ele" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-chocolate transition-colors">
+            <a href="https://t.me/+FpdzNmQSbgQxMTky" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-chocolate transition-colors">
               Telegram-канал
             </a>
             <a href="https://t.me/china_truck_manager" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-chocolate transition-colors">
