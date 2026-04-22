@@ -89,7 +89,7 @@ export function Installment() {
                 className="rounded-full h-12 px-8 bg-navy text-cream hover:bg-navy/90 text-base"
               >
                 <a
-                  href="https://t.me/juzele_ele"
+                  href="https://t.me/juzele"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -98,7 +98,7 @@ export function Installment() {
                 </a>
               </Button>
               <p className="mt-3 text-xs text-chocolate/80 tracking-wide">
-                @juzele_ele · Telegram Гузель
+                @juzele · Telegram Гузель
               </p>
             </div>
           </div>
