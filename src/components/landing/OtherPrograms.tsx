@@ -6,6 +6,7 @@ type Tariff = {
   price: string;
   altPrice: string;
   features: string[];
+  paymentUrl?: string;
 };
 
 type Program = {
@@ -40,6 +41,7 @@ const programs: Program[] = [
           "Без обратной связи",
           "Доступ к обучающим материалам в течение 6 месяцев",
         ],
+        paymentUrl: "https://china.bayersacademy.ru/neo15",
       },
       {
         name: "С поддержкой куратора",
@@ -105,7 +107,13 @@ export function OtherPrograms() {
                         size="lg"
                         className="mt-5 w-full rounded-none h-12 bg-navy text-cream hover:bg-navy/90"
                       >
-                        <a href="#cta">Оплатить</a>
+                        <a
+                          href={t.paymentUrl ?? "#cta"}
+                          target={t.paymentUrl ? "_blank" : undefined}
+                          rel={t.paymentUrl ? "noopener noreferrer" : undefined}
+                        >
+                          Оплатить
+                        </a>
                       </Button>
                     </div>
                   ))}
