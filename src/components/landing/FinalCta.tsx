@@ -52,11 +52,11 @@ export function FinalCta() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-cream/70">
-              <a href="https://t.me/juzele" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
-                @juzele · Telegram Гузель
-              </a>
               <a href="https://t.me/china_truck_manager" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
                 @china_truck_manager · Менеджер
+              </a>
+              <a href="https://t.me/juzele" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+                @juzele · Telegram Гузель
               </a>
             </div>
           </div>
