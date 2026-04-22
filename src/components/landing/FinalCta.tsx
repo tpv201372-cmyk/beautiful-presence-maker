@@ -51,7 +51,7 @@ export function FinalCta() {
               </Button>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-cream/70">
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-cream/70 mx-[3px] py-0 px-[25px] gap-0">
               <a href="https://t.me/china_truck_manager" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
                 @china_truck_manager · Менеджер
               </a>
