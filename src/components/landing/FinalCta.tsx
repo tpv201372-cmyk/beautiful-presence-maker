@@ -46,7 +46,7 @@ export function FinalCta() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Написать Гузель
+                   Написать мне
                 </a>
               </Button>
             </div>
