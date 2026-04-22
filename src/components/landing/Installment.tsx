@@ -86,7 +86,7 @@ export function Installment() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-none h-12 px-8 bg-navy text-cream hover:bg-navy/90 text-base"
+                className="rounded-full h-12 px-8 bg-navy text-cream hover:bg-navy/90 text-base"
               >
                 <a
                   href="https://t.me/juzele_ele"

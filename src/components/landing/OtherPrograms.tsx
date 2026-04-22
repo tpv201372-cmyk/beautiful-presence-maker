@@ -106,7 +106,7 @@ export function OtherPrograms() {
                       <Button
                         asChild
                         size="lg"
-                        className="mt-5 w-full rounded-none h-12 bg-navy text-cream hover:bg-navy/90"
+                        className="mt-5 w-full rounded-full h-12 bg-navy text-cream hover:bg-navy/90"
                       >
                         <a
                           href={t.paymentUrl ?? "#cta"}
@@ -131,7 +131,7 @@ export function OtherPrograms() {
                   <Button
                     asChild
                     size="lg"
-                    className="mt-5 w-full rounded-none h-12 bg-navy text-cream hover:bg-navy/90"
+                    className="mt-5 w-full rounded-full h-12 bg-navy text-cream hover:bg-navy/90"
                   >
                     <a
                       href={p.paymentUrl ?? "#cta"}

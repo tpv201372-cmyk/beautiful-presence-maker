@@ -159,7 +159,7 @@ export function Tariffs() {
               <Button
                 asChild
                 size="lg"
-                className={`mt-10 rounded-none h-12 ${
+                className={`mt-10 rounded-full h-12 ${
                   t.highlight
                     ? "bg-gold text-navy hover:bg-gold/90"
                     : "bg-navy text-cream hover:bg-navy/90"

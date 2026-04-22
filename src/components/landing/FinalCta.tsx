@@ -25,7 +25,7 @@ export function FinalCta() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="rounded-none h-14 px-10 bg-gold text-navy hover:bg-gold/90 text-base">
+              <Button asChild size="lg" className="rounded-full h-14 px-10 bg-gold text-navy hover:bg-gold/90 text-base">
                 <a
                   href="https://t.me/china_truck_manager"
                   target="_blank"
@@ -39,7 +39,7 @@ export function FinalCta() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-none h-14 px-10 border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-navy text-base"
+                className="rounded-full h-14 px-10 border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-navy text-base"
               >
                 <a
                   href="https://t.me/juzele_ele"
