@@ -20,6 +20,7 @@ const tariffs = [
     paymentNote: "Рассрочка на 12 месяцев или полная оплата",
     cta: "Оплатить",
     highlight: false,
+    paymentUrl: "https://china.bayersacademy.ru/75",
   },
   {
     name: "Вместе с Гузель",
@@ -162,7 +163,13 @@ export function Tariffs() {
                     : "bg-navy text-cream hover:bg-navy/90"
                 }`}
               >
-                <a href="#cta">{t.cta}</a>
+                <a
+                  href={t.paymentUrl ?? "#cta"}
+                  target={t.paymentUrl ? "_blank" : undefined}
+                  rel={t.paymentUrl ? "noopener noreferrer" : undefined}
+                >
+                  {t.cta}
+                </a>
               </Button>
               <a
                 href="#installment"
