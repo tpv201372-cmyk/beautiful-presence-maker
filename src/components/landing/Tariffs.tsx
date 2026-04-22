@@ -44,6 +44,7 @@ const tariffs = [
     cta: "Оплатить",
     highlight: true,
     badge: "Выбор большинства",
+    paymentUrl: "https://china.bayersacademy.ru/150",
   },
   {
     name: "Индивидуальный",
