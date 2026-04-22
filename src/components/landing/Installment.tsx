@@ -71,7 +71,7 @@ export function Installment() {
 
         <div className="mt-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <div className="lg:col-span-5 reveal">
-            <p className="text-xs uppercase tracking-[0.3em] text-chocolate mb-4">
+            <p className="uppercase tracking-[0.3em] text-chocolate mb-4 text-base">
               Внутренняя рассрочка
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-navy leading-[1.05]">
