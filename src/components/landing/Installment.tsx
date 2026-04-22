@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const steps = [
   { n: "01", t: "Выберите тариф", d: "Определитесь с подходящим форматом обучения" },
   { n: "02", t: "Заполните заявку", d: "Свяжитесь с менеджером — ответит в течение часа" },
@@ -6,6 +8,27 @@ const steps = [
 ];
 
 const countries = ["🇷🇺 Россия", "🇧🇾 Беларусь", "🇰🇿 Казахстан", "🇺🇿 Узбекистан", "🇰🇬 Кыргызстан"];
+
+const internalSteps = [
+  "Вы пишите мне, о том, что вам нужна внутренняя рассрочка",
+  "Далее я отправляю вам ссылку на оплату для бронирования места",
+  "Согласовываем с вами даты следующих платежей",
+  "Оставшуюся сумму оплачиваете до оговорённого числа",
+];
+
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M21.426 2.574a1.5 1.5 0 0 0-1.62-.27L2.73 9.36c-1.05.42-1.02 1.92.045 2.295l4.32 1.515 1.665 5.265a1.05 1.05 0 0 0 1.74.42l2.49-2.475 4.515 3.33c.78.57 1.89.165 2.115-.78l3.06-13.86a1.5 1.5 0 0 0-.255-1.496ZM9.84 14.43l-.51 3.585-1.215-3.84 8.745-6.135-7.02 6.39Z" />
+    </svg>
+  );
+}
 
 export function Installment() {
   return (
@@ -44,6 +67,65 @@ export function Installment() {
               {c}
             </span>
           ))}
+        </div>
+
+        <div className="mt-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="lg:col-span-5 reveal">
+            <p className="text-xs uppercase tracking-[0.3em] text-chocolate mb-4">
+              Внутренняя рассрочка
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-navy leading-[1.05]">
+              Как работает <span className="italic text-chocolate">внутренняя рассрочка?</span>
+            </h2>
+            <p className="mt-6 text-foreground/75 text-base leading-relaxed">
+              Гибкий вариант оплаты напрямую со мной — без банков и заявок.
+              Договариваемся об удобных датах платежей индивидуально.
+            </p>
+
+            <div className="mt-8">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-none h-12 px-8 bg-navy text-cream hover:bg-navy/90 text-base"
+              >
+                <a
+                  href="https://t.me/juzele_ele"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <TelegramIcon className="size-5" />
+                  Связаться со мной
+                </a>
+              </Button>
+              <p className="mt-3 text-xs text-chocolate/80 tracking-wide">
+                @juzele_ele · Telegram Гузель
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 reveal">
+            <ol className="space-y-5">
+              {internalSteps.map((text, i) => (
+                <li
+                  key={i}
+                  className="flex gap-5 bg-background p-6 border-l-2 border-gold"
+                >
+                  <span className="font-display italic text-3xl text-gold leading-none shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-base text-navy/90 leading-relaxed pt-1">
+                    {text}
+                  </p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-6 bg-beige border-l-4 border-chocolate p-5">
+              <p className="text-sm md:text-base text-chocolate font-semibold leading-relaxed">
+                В случае невнесения оплаты доступ к обучению не предоставляется.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
