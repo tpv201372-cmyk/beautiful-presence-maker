@@ -64,6 +64,7 @@ const tariffs = [
     paymentNote: "Рассрочка на 12 месяцев или полная оплата",
     cta: "Оплатить",
     highlight: false,
+    paymentUrl: "https://china.bayersacademy.ru/250",
   },
 ];
 
