@@ -51,6 +51,7 @@ const programs: Program[] = [
           "Обратная связь в группе с куратором",
           "Доступ к обучающим материалам в течение 6 месяцев",
         ],
+        paymentUrl: "https://china.bayersacademy.ru/neo25",
       },
     ],
   },
