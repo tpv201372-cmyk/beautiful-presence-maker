@@ -52,14 +52,14 @@ export function Hero() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="rounded-none h-12 px-8 bg-navy text-cream hover:bg-navy/90">
+              <Button asChild size="lg" className="rounded-full h-12 px-8 bg-navy text-cream hover:bg-navy/90">
                 <a href="#tariffs">Узнать о тарифах</a>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-none h-12 px-8 border-navy text-navy hover:bg-navy hover:text-cream"
+                className="rounded-full h-12 px-8 border-navy text-navy hover:bg-navy hover:text-cream"
               >
                 <a href="#program">Программа курса</a>
               </Button>
