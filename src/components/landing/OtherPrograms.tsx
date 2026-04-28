@@ -34,7 +34,7 @@ const programs: Program[] = [
     tag: "Мини-курс",
     tariffs: [
       {
-        name: "Все сам",
+        name: "Всё сам",
         price: "15 000 ₽",
         altPrice: "≈ 150 $",
         features: [
