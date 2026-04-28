@@ -1,5 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+
+type Module = {
+  title: string;
+  topics: string[];
+};
 
 type Tariff = {
   name: string;
@@ -17,7 +27,72 @@ type Program = {
   sub?: string;
   tariffs?: Tariff[];
   paymentUrl?: string;
+  modules?: Module[];
 };
+
+const clubModules: Module[] = [
+  {
+    title: "Введение и подготовка",
+    topics: [
+      "Вводный урок. О чём будет этот курс",
+      "Подготовка: как скачать Алипей, 1688, Таобао, Пиндуодуо и Пойзон на iPhone и Android",
+      "Этапы заказа из Китая: из скольки шагов состоит заказ и за что вы платите",
+    ],
+  },
+  {
+    title: "Практика: Алипей и 1688",
+    topics: [
+      "Платёжная система Алипей: лимиты, использование, регистрация",
+      "Регистрация на сайте 1688",
+      "Как прикрепить склад на сайте 1688",
+      "Как искать товары на сайте 1688",
+      "Как заказывать и оплачивать товары на сайте 1688",
+      "Как выбрать надёжного продавца",
+      "Как отслеживать товары на сайте 1688",
+      "Как делать возврат на сайте 1688, если товар ещё не выехал на склад Карго",
+    ],
+  },
+  {
+    title: "Таобао",
+    topics: [
+      "Регистрация на Таобао",
+      "Как прикрепить адрес склада и отслеживать посылки",
+      "Как искать товары на Таобао",
+      "Как ориентироваться по рейтингу продавцов на Таобао",
+      "Как заказывать и оплачивать товары на Таобао",
+    ],
+  },
+  {
+    title: "Пойзон",
+    topics: [
+      "Как скачать Пойзон на Android",
+      "Как зарегистрироваться на сайте Пойзон",
+      "Как прикрепить склад Карго и отслеживать заказ",
+      "Как искать товары на сайте Пойзон",
+      "Как выбирать товары на Пойзон и оплачивать их",
+      "Полезное о Пойзон: как выбрать правильный размер и определить оригинальность купленного товара",
+    ],
+  },
+  {
+    title: "Пиндуодуо",
+    topics: [
+      "Как скачать Пиндуодуо на iPhone",
+      "Как зарегистрироваться на Пиндуодуо",
+      "Как прикрепить адрес склада на Пиндуодуо",
+      "Как сделать заказ товаров на Пиндуодуо",
+      "Как оформить карту РСХБ для оплаты на Пиндуодуо",
+      "Секретные кнопки и значки на Пиндуодуо",
+    ],
+  },
+  {
+    title: "Доставка",
+    topics: [
+      "Этапы доставки",
+      "Как рассчитать доставку заранее",
+      "Как выбрать упаковку для товара",
+    ],
+  },
+];
 
 const programs: Program[] = [
   {
@@ -27,6 +102,7 @@ const programs: Program[] = [
     desc: "Базовые закупки из Китая «для себя» в розницу. Идеально для старта - попробовать тему без больших вложений.",
     tag: "Сообщество",
     paymentUrl: "https://china.bayersacademy.ru/club65",
+    modules: clubModules,
   },
   {
     name: "НЕО-закупки в Китае",
@@ -83,6 +159,37 @@ export function OtherPrograms() {
               </div>
               <h3 className="font-display text-3xl text-navy leading-tight">{p.name}</h3>
               <p className="mt-4 text-foreground/75 leading-relaxed text-sm">{p.desc}</p>
+
+              {p.modules && (
+                <Collapsible className="mt-6">
+                  <CollapsibleTrigger className="group flex w-full items-center justify-between gap-4 rounded-full border border-navy/20 px-5 h-12 text-left text-sm font-medium text-navy hover:border-navy hover:bg-navy/[0.03] transition-colors">
+                    <span>Посмотреть содержание курса</span>
+                    <ChevronDown className="size-4 shrink-0 text-navy/60 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                    <div className="mt-5 space-y-6">
+                      {p.modules.map((m, idx) => (
+                        <div key={m.title} className="pt-5 border-t border-border first:border-t-0 first:pt-0">
+                          <div className="text-[11px] uppercase tracking-[0.25em] text-chocolate mb-2">
+                            Модуль {idx + 1}
+                          </div>
+                          <div className="font-display text-lg text-navy mb-3 leading-snug">
+                            {m.title}
+                          </div>
+                          <ul className="space-y-2">
+                            {m.topics.map((t) => (
+                              <li key={t} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
+                                <Check className="size-4 mt-0.5 shrink-0 text-chocolate" strokeWidth={3} />
+                                <span>{t}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              )}
 
               {p.tariffs ? (
                 <div className="mt-6 space-y-6">
