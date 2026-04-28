@@ -31,7 +31,7 @@ const tariffs = [
     altPrice: "≈ 85 $",
     desc: "Для самостоятельного изучения",
     features: ["Доступ к урокам — 4 месяца", "Без обратной связи"],
-    paymentUrl: "https://china.bayersacademy.ru/neo2-85",
+    paymentUrl: "https://china.bayersacademy.ru/neo85",
     highlight: false,
   },
   {
