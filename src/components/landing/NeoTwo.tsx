@@ -44,7 +44,7 @@ const tariffs = [
       "БАЗА ПОСТАВЩИКОВ копий брендов, мебели, сантехники, оборудования, одежды и обуви, детских товаров и т.д. База постоянно обновляется",
       "Доступ к урокам — 6 месяцев",
     ],
-    paymentUrl: "https://china.bayersacademy.ru/neo2-135",
+    paymentUrl: "https://china.bayersacademy.ru/neo135",
     highlight: true,
     badge: "Рекомендуем",
   },
