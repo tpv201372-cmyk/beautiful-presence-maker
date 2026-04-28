@@ -1,32 +1,52 @@
-## Add collapsible "Посмотреть содержание курса" to НЕО-закупки card
+## Add new section "НЕО-закупки в Китае 2.0 — новые маркетплейсы"
 
-Mirror the existing club-card pattern in `src/components/landing/OtherPrograms.tsx` and add a 12-module curriculum to the НЕО-закупки card.
+A standalone landing section placed **before** the "Беспроцентная рассрочка" (Installment) block, in the same visual style as the rest of the site (cream/beige/navy palette, `font-display`, uppercase chocolate eyebrow, gold accents, reveal animations, capsule buttons).
 
-### Where it goes
-In `src/components/landing/OtherPrograms.tsx`, inside the НЕО-закупки `Program` object — add a `modules` array. The existing render block already conditionally renders `<Collapsible>` when `p.modules` exists (placed right after the `<p>` description, before tariffs), so it will appear exactly after the text "Короткий концентрат: как делать первые закупки на маркетплейсы. Для тех, кто хочет быстро попробовать модель." and before the two тариф-блоков.
+This is NOT a new route — it's a new section component on the home page (consistent with how "НЕО-закупки" already lives inside `OtherPrograms`). The user's word "страница" refers to the page-section before "Оплата · Беспроцентная рассрочка".
 
-No layout/style changes — same capsule trigger, same ChevronDown rotation, same module list styling (uppercase "Модуль N" header in `text-chocolate`, display-font title, bullet list with `Check` icons), same accordion animation. Mobile spacing is already handled by the existing pattern.
+### What it contains
 
-### Modules to add (verbatim from screenshots, 12 модулей)
+- Eyebrow: `Новый продукт`
+- Heading: **НЕО-закупки в Китае 2.0** — *новые маркетплейсы* (italic chocolate accent like other section titles)
+- Lead paragraph: "Многие уже изучили сайты 1688, Таобао, Пойзон и Пиндуодуо и хотят идти дальше, узнавать больше, и вообще, развиваться как байеры в будущем. Я сделала для таких людей отдельное обучение."
+- "Что входит в обучение" — 4 feature cards (cream cards with gold top border, `Check` icons), one per bullet:
+  1. Изучение схемы заказа с маркетплейсов VipShop, Weidian, Gofish, GXHY и обмен юаней
+  2. Создание китайского номера телефона, WeChat и регистрация в WeChat Pay
+  3. Подробный модуль про доставку — как не попасть на деньги при габаритных товарах, грамотно просчитать стоимость и подобрать упаковку. Проверенный сервис доставки от 300 г (чай, часы)
+  4. Самостоятельный обмен юаней на Alipay — ещё один способ заработка на Китае
+- Two pricing cards side-by-side (matching the existing tariff style inside `OtherPrograms` — cream block, chocolate eyebrow `Тариф`, navy display price, bullet features, full-width navy "Оплатить" button):
 
-1. **Введение и подготовка** — Вводный урок. О чём будет этот курс; Подготовка: что нужно сделать и как скачать приложения Алипей, 1688, Таобао, Пиндуодуо и Пойзон на Айфон и Андроид; Этапы заказа из Китая: из скольки шагов состоит заказ и за что вы платите при заказе.
-2. **Практический: Алипей и 1688** — Платёжная система Алипей. Лимиты, использование, регистрация; Регистрация на сайте 1688; Как прикрепить склад на сайте 1688; Как искать товары на сайте 1688; Как заказывать и оплачивать на сайте 1688; Как выбрать надёжного продавца; Как отслеживать товары на сайте 1688; Как делать возврат на сайте 1688, если товар ещё не выехал на склад Карго.
-3. **Таобао** — Регистрация на Таобао; Как прикрепить адрес склада и отслеживать посылки; Как искать товары на Таобао; Как ориентироваться по рейтингу продавцов на Таобао; Как заказывать и оплачивать товары на Таобао.
-4. **Пойзон** — Как скачать Пойзон на Андроид; Как зарегистрироваться на сайте Пойзон; Как прикрепить склад Карго и отслеживать заказ; Как искать товары на сайте Пойзон; Как выбирать товары на Пойзон и оплачивать их; Кое-что полезное о Пойзон (как выбрать правильный размер, как определить оригинальность купленного товара).
-5. **Пиндуодуо** — Как скачать Пиндуодуо на Айфон; Как зарегистрироваться на Пиндуодуо; Как прикрепить адрес склада на Пиндуодуо; Как сделать заказ товаров на Пиндуодуо; Как оформить карту РСХБ для оплаты на Пиндуодуо; Секретные кнопки и значки на Пиндуодуо.
-6. **Новые приложения** — Этапы доставки; Как рассчитать доставку заранее; Как выбрать упаковку для товара.
-7. **Модуль 7** — Знакомство с новыми приложениями VIPSHOP, Weidian, GoFish; Подготовка к работе с новыми приложениями: какие приложения нужно скачать (ссылки) и этапы работы с данными приложениями; Регистрация и использование приложения Вичат; Создание Китайского номера в Esender.
-8. **Модуль 8** — Регистрация в приложении Vipshop; Как привязать адрес склада в приложении Vipshop; Как искать товары в приложении Vipshop; Как оплачивать и отслеживать свои заказы в приложении Vipshop.
-9. **Модуль 9** — Регистрация в приложении GoFish; Как привязать адрес склада; Как искать товары и проверять продавцов; Как оплатить товар, общаться с продавцом и отслеживать свои заказы.
-10. **Модуль 10** — Регистрация в приложении Weidian; Как привязать адрес; Как искать товары и проверять продавцов; Как оплатить товар, общаться с продавцом и отслеживать свои заказы.
-11. **Бонусный** — Регистрация в приложении GXNY; Работа с приложением GXNY.
-12. **Самостоятельное пополнение Алипей** — Подготовка к работе; Инструкция по работе с обменом на бирже; Расчёт своей прибыли.
+  **Тариф · Самостоятельно — 8 500 ₽**
+  - Для самостоятельного изучения
+  - Доступ к урокам 4 месяца
+  - Кнопка «Оплатить» (placeholder URL — see questions below)
 
-### Technical details
-- Add a new `neoModules: Module[]` constant next to `clubModules`.
-- Add `modules: neoModules` to the НЕО-закупки `Program` entry.
-- No changes to types, render JSX, styles, or other components — the existing `{p.modules && (<Collapsible>...)}` block handles rendering.
-- Result: the trigger appears between the description and the "Тариф · Всё сам" block on the right card, matching the club card visually and on mobile.
+  **Тариф · С обратной связью — 13 500 ₽** (highlighted with `Выбор большинства`-style gold badge)
+  - Обратная связь в группе в течение 2 месяцев
+  - БАЗА ПОСТАВЩИКОВ копий брендов, мебели, сантехники, оборудования, одежды и обуви, детских товаров и т.д. База постоянно обновляется
+  - Доступ к урокам 6 месяцев
+  - Кнопка «Оплатить»
+
+- Footer note: "Записаться и забронировать место можно уже сейчас."
+
+### Layout
+```
+container max-w-7xl, py-20 lg:py-28, bg-background
+[ Eyebrow + H2 + lead paragraph ]              (max-w-3xl, reveal)
+[ 4-card grid: md:grid-cols-2 lg:grid-cols-4 ] (Что входит)
+[ 2 pricing cards: md:grid-cols-2 ]            (Тарифы, gap-6)
+[ small caption row ]
+```
+Mobile: cards stack 1 column; pricing stacks; same paddings/spacing as `OtherPrograms`/`Tariffs`.
 
 ### Files
-- `src/components/landing/OtherPrograms.tsx` (data only)
+
+- **New** `src/components/landing/NeoTwo.tsx` — the section component.
+- **Edit** `src/routes/index.tsx` — import `NeoTwo` and render it between `<OtherPrograms />` and `<Installment />`.
+
+### Questions to confirm before implementing
+
+1. **Payment URLs.** I don't have URLs for the two new tariffs. The existing pattern uses `https://china.bayersacademy.ru/<slug>` (e.g. `/neo15`, `/neo25`, `/club65`). I'll use placeholders `/neo2-85` and `/neo2-135` unless you provide the real links.
+2. **Telegram booking link.** The "Записаться и забронировать место" line — should it be plain text, or a button linking to `@juzele` (same as the Installment section)?
+
+If you don't answer, I'll default to: placeholder payment URLs in the same `china.bayersacademy.ru/...` format, and add a small "Записаться через Telegram" link to `https://t.me/juzele` next to the caption.

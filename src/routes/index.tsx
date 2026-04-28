@@ -8,6 +8,7 @@ import { Outcomes } from "@/components/landing/Outcomes";
 import { Program } from "@/components/landing/Program";
 import { Tariffs } from "@/components/landing/Tariffs";
 import { OtherPrograms } from "@/components/landing/OtherPrograms";
+import { NeoTwo } from "@/components/landing/NeoTwo";
 import { Installment } from "@/components/landing/Installment";
 import { Faq } from "@/components/landing/Faq";
 import { FinalCta } from "@/components/landing/FinalCta";
@@ -52,6 +53,7 @@ function Index() {
       <Program />
       <Tariffs />
       <OtherPrograms />
+      <NeoTwo />
       <Installment />
       <Faq />
       <FinalCta />
