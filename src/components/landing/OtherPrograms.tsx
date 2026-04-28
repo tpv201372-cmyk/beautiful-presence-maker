@@ -160,6 +160,37 @@ export function OtherPrograms() {
               <h3 className="font-display text-3xl text-navy leading-tight">{p.name}</h3>
               <p className="mt-4 text-foreground/75 leading-relaxed text-sm">{p.desc}</p>
 
+              {p.modules && (
+                <Collapsible className="mt-6">
+                  <CollapsibleTrigger className="group flex w-full items-center justify-between gap-4 rounded-full border border-navy/20 px-5 h-12 text-left text-sm font-medium text-navy hover:border-navy hover:bg-navy/[0.03] transition-colors">
+                    <span>Посмотреть содержание курса</span>
+                    <ChevronDown className="size-4 shrink-0 text-navy/60 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                    <div className="mt-5 space-y-6">
+                      {p.modules.map((m, idx) => (
+                        <div key={m.title} className="pt-5 border-t border-border first:border-t-0 first:pt-0">
+                          <div className="text-[11px] uppercase tracking-[0.25em] text-chocolate mb-2">
+                            Модуль {idx + 1}
+                          </div>
+                          <div className="font-display text-lg text-navy mb-3 leading-snug">
+                            {m.title}
+                          </div>
+                          <ul className="space-y-2">
+                            {m.topics.map((t) => (
+                              <li key={t} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
+                                <Check className="size-4 mt-0.5 shrink-0 text-chocolate" strokeWidth={3} />
+                                <span>{t}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              )}
+
               {p.tariffs ? (
                 <div className="mt-6 space-y-6">
                   {p.tariffs.map((t) => (
