@@ -210,3 +210,116 @@
     pointer-events: none;
   }
 }
+
+/*
+ * Legal documents typography
+ * Used inside <div class="legal-content"> on /legal/* pages.
+ */
+.legal-content {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.legal-content > * + * {
+  margin-top: 1rem;
+}
+
+.legal-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--navy);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.legal-content h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--chocolate);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-content h2 + p,
+.legal-content h3 + p {
+  margin-top: 0.5rem;
+}
+
+.legal-content p {
+  color: oklch(0.27 0.06 265 / 0.9);
+}
+
+.legal-content strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.legal-content ul,
+.legal-content ol {
+  padding-left: 1.5rem;
+}
+
+.legal-content ul > li {
+  list-style: disc;
+}
+
+.legal-content ol > li {
+  list-style: decimal;
+}
+
+.legal-content li + li {
+  margin-top: 0.35rem;
+}
+
+.legal-content a {
+  color: var(--chocolate);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-content a:hover {
+  color: var(--navy);
+}
+
+.legal-content .legal-table-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border);
+  background-color: var(--cream);
+  border-top: 3px solid var(--gold);
+}
+
+.legal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.legal-content table th,
+.legal-content table td {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-content table th {
+  background-color: var(--beige);
+  color: var(--chocolate);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.legal-content table .price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--navy);
+}
+

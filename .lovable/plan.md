@@ -1,52 +1,67 @@
-## Add new section "НЕО-закупки в Китае 2.0 — новые маркетплейсы"
+## Проблема
 
-A standalone landing section placed **before** the "Беспроцентная рассрочка" (Installment) block, in the same visual style as the rest of the site (cream/beige/navy palette, `font-display`, uppercase chocolate eyebrow, gold accents, reveal animations, capsule buttons).
+Файлы в подвале сейчас ведут на `.docx` в `/public/docs/...`. Браузер не умеет открывать `.docx` — большинство пользователей видит «кракозябры» (бинарный мусор, как на скриншоте). Это не вопрос кодировки, это формат: `.docx` — ZIP-архив, его читает только Word/Pages.
 
-This is NOT a new route — it's a new section component on the home page (consistent with how "НЕО-закупки" already lives inside `OtherPrograms`). The user's word "страница" refers to the page-section before "Оплата · Беспроцентная рассрочка".
+## Решение
 
-### What it contains
+Перенести содержимое всех 4 документов прямо на сайт как обычные страницы — на отдельных маршрутах, в стиле сайта (cream/navy/chocolate, `font-display` заголовки, `Inter` body, узкая колонка для длинного текста). Кириллица будет читаться корректно, документы можно листать с телефона, индексироваться поисковиками и шариться ссылкой.
 
-- Eyebrow: `Новый продукт`
-- Heading: **НЕО-закупки в Китае 2.0** — *новые маркетплейсы* (italic chocolate accent like other section titles)
-- Lead paragraph: "Многие уже изучили сайты 1688, Таобао, Пойзон и Пиндуодуо и хотят идти дальше, узнавать больше, и вообще, развиваться как байеры в будущем. Я сделала для таких людей отдельное обучение."
-- "Что входит в обучение" — 4 feature cards (cream cards with gold top border, `Check` icons), one per bullet:
-  1. Изучение схемы заказа с маркетплейсов VipShop, Weidian, Gofish, GXHY и обмен юаней
-  2. Создание китайского номера телефона, WeChat и регистрация в WeChat Pay
-  3. Подробный модуль про доставку — как не попасть на деньги при габаритных товарах, грамотно просчитать стоимость и подобрать упаковку. Проверенный сервис доставки от 300 г (чай, часы)
-  4. Самостоятельный обмен юаней на Alipay — ещё один способ заработка на Китае
-- Two pricing cards side-by-side (matching the existing tariff style inside `OtherPrograms` — cream block, chocolate eyebrow `Тариф`, navy display price, bullet features, full-width navy "Оплатить" button):
+## Что создаём
 
-  **Тариф · Самостоятельно — 8 500 ₽**
-  - Для самостоятельного изучения
-  - Доступ к урокам 4 месяца
-  - Кнопка «Оплатить» (placeholder URL — see questions below)
+Новые маршруты TanStack Start (каждый со своим `head()`/title для SEO):
 
-  **Тариф · С обратной связью — 13 500 ₽** (highlighted with `Выбор большинства`-style gold badge)
-  - Обратная связь в группе в течение 2 месяцев
-  - БАЗА ПОСТАВЩИКОВ копий брендов, мебели, сантехники, оборудования, одежды и обуви, детских товаров и т.д. База постоянно обновляется
-  - Доступ к урокам 6 месяцев
-  - Кнопка «Оплатить»
-
-- Footer note: "Записаться и забронировать место можно уже сейчас."
-
-### Layout
 ```
-container max-w-7xl, py-20 lg:py-28, bg-background
-[ Eyebrow + H2 + lead paragraph ]              (max-w-3xl, reveal)
-[ 4-card grid: md:grid-cols-2 lg:grid-cols-4 ] (Что входит)
-[ 2 pricing cards: md:grid-cols-2 ]            (Тарифы, gap-6)
-[ small caption row ]
+/legal/oferta              → Оферта на оказание услуг по обучению
+/legal/privacy-policy      → Политика обработки персональных данных
+/legal/personal-data       → Согласие на обработку персональных данных
+/legal/marketing-consent   → Согласие на получение рекламных рассылок и предложений
 ```
-Mobile: cards stack 1 column; pricing stacks; same paddings/spacing as `OtherPrograms`/`Tariffs`.
 
-### Files
+Все страницы используют общий лэйаут `src/routes/legal.tsx` (`<Outlet />`) с:
 
-- **New** `src/components/landing/NeoTwo.tsx` — the section component.
-- **Edit** `src/routes/index.tsx` — import `NeoTwo` and render it between `<OtherPrograms />` and `<Installment />`.
+- Шапкой сайта (логотип «Гузель Маликова», ссылка «← На главную»)
+- Узкой читабельной колонкой `max-w-3xl`, `prose`-подобной типографикой
+- Подвалом сайта (тот же `Footer`)
+- Тёмным золотым акцентом на заголовках разделов, как в остальных секциях
 
-### Questions to confirm before implementing
+## Файлы
 
-1. **Payment URLs.** I don't have URLs for the two new tariffs. The existing pattern uses `https://china.bayersacademy.ru/<slug>` (e.g. `/neo15`, `/neo25`, `/club65`). I'll use placeholders `/neo2-85` and `/neo2-135` unless you provide the real links.
-2. **Telegram booking link.** The "Записаться и забронировать место" line — should it be plain text, or a button linking to `@juzele` (same as the Installment section)?
+**Новые:**
 
-If you don't answer, I'll default to: placeholder payment URLs in the same `china.bayersacademy.ru/...` format, and add a small "Записаться через Telegram" link to `https://t.me/juzele` next to the caption.
+- `src/routes/legal.tsx` — лэйаут (header + `<Outlet />` + Footer)
+- `src/routes/legal.oferta.tsx` — текст оферты (~15 страниц, разделы 1–7 + Приложение №1 с тарифами и программами курсов)
+- `src/routes/legal.privacy-policy.tsx` — Политика обработки ПД (9 разделов)
+- `src/routes/legal.personal-data.tsx` — Согласие на обработку ПД
+- `src/routes/legal.marketing-consent.tsx` — Согласие на рекламные рассылки
+- `src/components/legal/LegalDocument.tsx` — общий компонент-обёртка: eyebrow («Документ»), H1, дата/реквизиты, контент-слот со стилями для `h2/h3/p/ul/ol/table`
+
+**Правки:**
+
+- `src/components/landing/Footer.tsx` — заменить `href="/docs/...docx"` на `<Link to="/legal/...">`
+- Удалить `public/docs/*.docx` (опционально — оставить как fallback-скачивание не нужно, иначе снова будут кракозябры)
+
+## Вёрстка контента
+
+Текст вшиваем прямо в JSX (не подгружаем `.docx` в рантайме — это и быстрее, и SSR-совместимо). Используем нативные `<h2>`, `<h3>`, `<p>`, `<ul>`, `<ol>`, `<table>` с tailwind-классами через семантические токены (`text-navy`, `text-chocolate`, `border-border`, `bg-cream`).
+
+Для оферты — таблицы тарифов («С обратной связью / Без обратной связи», «С поддержкой куратора / Все сам», «Индивидуальный / VIP / Групповой») рендерим как обычные HTML-таблицы со стилем как в `Tariffs.tsx` (cream-фон, золотая верхняя рамка, navy-цены).
+
+Реквизиты ИП в конце каждого документа: ИНН 161103375653, ОГРНИП 322169000172622, г. Казань, ул. Аметьевская магистраль, д. 16, корп. 1, кв. 75, email [guzel27guzel@gmail.com](mailto:guzel27guzel@gmail.com).
+
+## Открытые места в текстах
+
+В исходных `.docx` есть незаполненные плейсхолдеры:
+
+- В Политике (п. 1.5) — «Пользователь – любой посетитель веб-сайта __________». Подставлю фактический домен сайта (`https://beautiful-presence-maker.lovable.app` или ваш кастомный).
+- В Согласии на обработку ПД — поля «Ф.И.О.», «паспортные данные», «сайт ______». Оставлю формулировку «Заполняя форму на сайте {домен} и нажимая кнопку „Оплатить"» — поля Ф.И.О./паспорта уберу как нерелевантные онлайн-акцепту (согласие фиксируется фактом оплаты).
+
+Если хотите конкретный домен или оставить плейсхолдеры — скажите после аппрува.
+
+## QA
+
+После реализации проверю:
+
+1. Все 4 ссылки в подвале открывают страницу с читаемой кириллицей.
+2. На мобильном (375px) колонка не уходит за край, таблицы скроллятся горизонтально (`overflow-x-auto`).
+3. `<title>` каждой страницы уникален, есть `description`.
+4. Кнопка «← На главную» работает.
