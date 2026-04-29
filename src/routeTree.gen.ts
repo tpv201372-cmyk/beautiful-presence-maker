@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal.privacy-policy'
+import { Route as LegalPersonalDataRouteImport } from './routes/legal.personal-data'
+import { Route as LegalMarketingConsentRouteImport } from './routes/legal.marketing-consent'
 
 const LegalRoute = LegalRouteImport.update({
   id: '/legal',
@@ -22,31 +25,71 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalPrivacyPolicyRoute = LegalPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => LegalRoute,
+} as any)
+const LegalPersonalDataRoute = LegalPersonalDataRouteImport.update({
+  id: '/personal-data',
+  path: '/personal-data',
+  getParentRoute: () => LegalRoute,
+} as any)
+const LegalMarketingConsentRoute = LegalMarketingConsentRouteImport.update({
+  id: '/marketing-consent',
+  path: '/marketing-consent',
+  getParentRoute: () => LegalRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/legal': typeof LegalRoute
+  '/legal': typeof LegalRouteWithChildren
+  '/legal/marketing-consent': typeof LegalMarketingConsentRoute
+  '/legal/personal-data': typeof LegalPersonalDataRoute
+  '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/legal': typeof LegalRoute
+  '/legal': typeof LegalRouteWithChildren
+  '/legal/marketing-consent': typeof LegalMarketingConsentRoute
+  '/legal/personal-data': typeof LegalPersonalDataRoute
+  '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/legal': typeof LegalRoute
+  '/legal': typeof LegalRouteWithChildren
+  '/legal/marketing-consent': typeof LegalMarketingConsentRoute
+  '/legal/personal-data': typeof LegalPersonalDataRoute
+  '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/legal'
+  fullPaths:
+    | '/'
+    | '/legal'
+    | '/legal/marketing-consent'
+    | '/legal/personal-data'
+    | '/legal/privacy-policy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/legal'
-  id: '__root__' | '/' | '/legal'
+  to:
+    | '/'
+    | '/legal'
+    | '/legal/marketing-consent'
+    | '/legal/personal-data'
+    | '/legal/privacy-policy'
+  id:
+    | '__root__'
+    | '/'
+    | '/legal'
+    | '/legal/marketing-consent'
+    | '/legal/personal-data'
+    | '/legal/privacy-policy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LegalRoute: typeof LegalRoute
+  LegalRoute: typeof LegalRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +108,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/privacy-policy': {
+      id: '/legal/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/legal/privacy-policy'
+      preLoaderRoute: typeof LegalPrivacyPolicyRouteImport
+      parentRoute: typeof LegalRoute
+    }
+    '/legal/personal-data': {
+      id: '/legal/personal-data'
+      path: '/personal-data'
+      fullPath: '/legal/personal-data'
+      preLoaderRoute: typeof LegalPersonalDataRouteImport
+      parentRoute: typeof LegalRoute
+    }
+    '/legal/marketing-consent': {
+      id: '/legal/marketing-consent'
+      path: '/marketing-consent'
+      fullPath: '/legal/marketing-consent'
+      preLoaderRoute: typeof LegalMarketingConsentRouteImport
+      parentRoute: typeof LegalRoute
+    }
   }
 }
 
+interface LegalRouteChildren {
+  LegalMarketingConsentRoute: typeof LegalMarketingConsentRoute
+  LegalPersonalDataRoute: typeof LegalPersonalDataRoute
+  LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
+}
+
+const LegalRouteChildren: LegalRouteChildren = {
+  LegalMarketingConsentRoute: LegalMarketingConsentRoute,
+  LegalPersonalDataRoute: LegalPersonalDataRoute,
+  LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
+}
+
+const LegalRouteWithChildren = LegalRoute._addFileChildren(LegalRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LegalRoute: LegalRoute,
+  LegalRoute: LegalRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
