@@ -13,6 +13,7 @@ import { Route as LegalRouteImport } from './routes/legal'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal.privacy-policy'
 import { Route as LegalPersonalDataRouteImport } from './routes/legal.personal-data'
+import { Route as LegalOfertaRouteImport } from './routes/legal.oferta'
 import { Route as LegalMarketingConsentRouteImport } from './routes/legal.marketing-consent'
 
 const LegalRoute = LegalRouteImport.update({
@@ -35,6 +36,11 @@ const LegalPersonalDataRoute = LegalPersonalDataRouteImport.update({
   path: '/personal-data',
   getParentRoute: () => LegalRoute,
 } as any)
+const LegalOfertaRoute = LegalOfertaRouteImport.update({
+  id: '/oferta',
+  path: '/oferta',
+  getParentRoute: () => LegalRoute,
+} as any)
 const LegalMarketingConsentRoute = LegalMarketingConsentRouteImport.update({
   id: '/marketing-consent',
   path: '/marketing-consent',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/legal': typeof LegalRouteWithChildren
   '/legal/marketing-consent': typeof LegalMarketingConsentRoute
+  '/legal/oferta': typeof LegalOfertaRoute
   '/legal/personal-data': typeof LegalPersonalDataRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/legal': typeof LegalRouteWithChildren
   '/legal/marketing-consent': typeof LegalMarketingConsentRoute
+  '/legal/oferta': typeof LegalOfertaRoute
   '/legal/personal-data': typeof LegalPersonalDataRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/legal': typeof LegalRouteWithChildren
   '/legal/marketing-consent': typeof LegalMarketingConsentRoute
+  '/legal/oferta': typeof LegalOfertaRoute
   '/legal/personal-data': typeof LegalPersonalDataRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/legal'
     | '/legal/marketing-consent'
+    | '/legal/oferta'
     | '/legal/personal-data'
     | '/legal/privacy-policy'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/legal'
     | '/legal/marketing-consent'
+    | '/legal/oferta'
     | '/legal/personal-data'
     | '/legal/privacy-policy'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/legal'
     | '/legal/marketing-consent'
+    | '/legal/oferta'
     | '/legal/personal-data'
     | '/legal/privacy-policy'
   fileRoutesById: FileRoutesById
@@ -122,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalPersonalDataRouteImport
       parentRoute: typeof LegalRoute
     }
+    '/legal/oferta': {
+      id: '/legal/oferta'
+      path: '/oferta'
+      fullPath: '/legal/oferta'
+      preLoaderRoute: typeof LegalOfertaRouteImport
+      parentRoute: typeof LegalRoute
+    }
     '/legal/marketing-consent': {
       id: '/legal/marketing-consent'
       path: '/marketing-consent'
@@ -134,12 +153,14 @@ declare module '@tanstack/react-router' {
 
 interface LegalRouteChildren {
   LegalMarketingConsentRoute: typeof LegalMarketingConsentRoute
+  LegalOfertaRoute: typeof LegalOfertaRoute
   LegalPersonalDataRoute: typeof LegalPersonalDataRoute
   LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
 }
 
 const LegalRouteChildren: LegalRouteChildren = {
   LegalMarketingConsentRoute: LegalMarketingConsentRoute,
+  LegalOfertaRoute: LegalOfertaRoute,
   LegalPersonalDataRoute: LegalPersonalDataRoute,
   LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
 }
