@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export function Footer() {
   return (
     <footer className="bg-cream border-t border-border py-12">
@@ -30,38 +32,30 @@ export function Footer() {
             Документы
           </div>
           <div className="flex flex-col md:flex-row md:flex-wrap gap-x-8 gap-y-3 text-sm">
-            <a
-              href="/docs/oferta-na-okazanie-uslug-po-obucheniyu.docx"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/legal/oferta"
               className="text-navy hover:text-chocolate transition-colors"
             >
               Оферта на оказание услуг по обучению
-            </a>
-            <a
-              href="/docs/politika-obrabotki-personalnyh-dannyh.docx"
-              target="_blank"
-              rel="noopener noreferrer"
+            </Link>
+            <Link
+              to="/legal/privacy-policy"
               className="text-navy hover:text-chocolate transition-colors"
             >
               Политика обработки персональных данных
-            </a>
-            <a
-              href="/docs/soglasie-na-obrabotku-personalnyh-dannyh.docx"
-              target="_blank"
-              rel="noopener noreferrer"
+            </Link>
+            <Link
+              to="/legal/personal-data"
               className="text-navy hover:text-chocolate transition-colors"
             >
               Согласие на обработку персональных данных
-            </a>
-            <a
-              href="/docs/soglasie-na-poluchenie-reklamnyh-rassylok.docx"
-              target="_blank"
-              rel="noopener noreferrer"
+            </Link>
+            <Link
+              to="/legal/marketing-consent"
               className="text-navy hover:text-chocolate transition-colors"
             >
               Согласие на получение рекламных рассылок и предложений
-            </a>
+            </Link>
           </div>
         </div>
 
