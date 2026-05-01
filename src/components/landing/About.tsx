@@ -37,7 +37,7 @@ export function About() {
               <p>
                 Основатель сервиса доставки{" "}
                 <strong className="text-navy">@china_trukk</strong> — собственный
-                склад в Фошани, более <strong>1500 клиентов</strong>, доставка
+                склад в Фошани, более <strong>2500 клиентов</strong>, доставка
                 под ключ из Китая в СНГ.
               </p>
               <p>
