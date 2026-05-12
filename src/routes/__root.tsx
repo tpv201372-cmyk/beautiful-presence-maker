@@ -29,6 +29,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google", content: "notranslate" },
       { title: "Гузель Маликова — Академия байеров «Китай от А до Я»" },
       {
         name: "description",
@@ -39,9 +40,8 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Гузель Маликова — Академия байеров «Китай от А до Я»" },
       { name: "twitter:title", content: "Гузель Маликова — Академия байеров «Китай от А до Я»" },
-      { name: "description", content: "A professional landing page showcasing expertise and services." },
-      { property: "og:description", content: "A professional landing page showcasing expertise and services." },
-      { name: "twitter:description", content: "A professional landing page showcasing expertise and services." },
+      { property: "og:description", content: "Авторский курс Гузель Маликовой: научитесь привозить товар из Китая, выходить на доход от 50 000 ₽ и строить личный бренд байера." },
+      { name: "twitter:description", content: "Авторский курс Гузель Маликовой: научитесь привозить товар из Китая, выходить на доход от 50 000 ₽ и строить личный бренд байера." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e0147821-090d-49a4-a3bc-e46f4c3174c6/id-preview-690f2e65--858d6f06-1e49-4186-b562-b734d12d19a5.lovable.app-1776588144538.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e0147821-090d-49a4-a3bc-e46f4c3174c6/id-preview-690f2e65--858d6f06-1e49-4186-b562-b734d12d19a5.lovable.app-1776588144538.png" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -60,7 +60,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <head>
         <HeadContent />
       </head>
